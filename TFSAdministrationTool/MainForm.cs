@@ -11,6 +11,7 @@ using TFSAdministrationTool.Proxy.Common;
 using Microsoft.TeamFoundation.Server;
 using TFSAdministrationTool.Controls;
 using System.Reflection;
+using System.Net.Mail;
 #endregion
 
 namespace TFSAdministrationTool
@@ -716,6 +717,10 @@ namespace TFSAdministrationTool
         {
           bool isDirty = false;
 
+          NotificationService notifier = new NotificationService();
+
+          
+
           foreach (Guid guid in MainController.PendingChanges.Checked.Keys)
           {
             PendingChange pendingChange = MainController.PendingChanges.Item(guid);
@@ -724,6 +729,15 @@ namespace TFSAdministrationTool
             string statusMessage = (pendingChange.ChangeType == TFSAdministrationTool.Proxy.Common.ChangeType.Add) ? Resources.PendingChangeActionAdd + " ": Resources.PendingChangeActionDelete + " ";
             statusMessage = statusMessage + pendingChange.UserName + " - " + pendingChange.TeamProject + " - " + pendingChange.Role;
             StartTask(statusMessage);
+
+            /// Construct the notification
+            NotificationLine notif = new NotificationLine(pendingChange);
+            if (!notifier.Notifications.ContainsKey(pendingChange.Email))
+            {
+                notifier.Notifications[pendingChange.Email] = new List<NotificationLine>();
+            }
+
+            notifier.Notifications[pendingChange.Email].Add(notif);
 
             /// Perform the Task Using the Controller
             Status status = MainController.OnCommitChange(pendingChange);
@@ -752,6 +766,7 @@ namespace TFSAdministrationTool
             }
           }
 
+
           /// Append the newly added Pending Changes to the ListView
           PendingChangesDataBind(MainController.PendingChanges);
 
@@ -760,6 +775,19 @@ namespace TFSAdministrationTool
 
           if (isDirty)
           {
+            /// Send notifications, if available
+              if (Properties.Settings.Default.NotifyUsersByEmail)
+              {
+                  using (SmtpClient client = new SmtpClient())
+                  {
+                      /// sort the notifications by email, and send an aggregated note
+                      foreach (MailMessage mail in notifier.PrepareNotifications())
+                      {
+                          client.Send(mail);
+                      }
+                  }
+              }
+
             /// Refresh the Grid if any changes were successfully commited
             LoadUserDataFromServer(MainController.CurrentServer.Server.Uri, MainController.CurrentServer.Server.InstanceId, MainController.CurrentServer.SelectedTeamProject);
           }

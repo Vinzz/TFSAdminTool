@@ -93,9 +93,9 @@ namespace TFSAdministrationTool.Proxy.Common
       m_Users.Add(new User() { Sid = sid, UserName = username, DisplayName = displayname});
     }
     
-    public void AddUser(string sid, string username, string displayname, Microsoft.TeamFoundation.Server.IdentityType identityType)
+    public void AddUser(string sid, string username, string displayname, string email, Microsoft.TeamFoundation.Server.IdentityType identityType)
     {
-      m_Users.Add(new User() { Sid = sid, UserName = username, DisplayName = displayname, IdentityType= identityType });
+      m_Users.Add(new User() { Sid = sid, UserName = username, DisplayName = displayname, Email = email, IdentityType= identityType });
     }
 
     public List<User> Users
@@ -111,6 +111,7 @@ namespace TFSAdministrationTool.Proxy.Common
       public string Sid { get; set; }
       public string UserName { get; set; }
       public string DisplayName { get; set; }
+      public string Email { get; set; }
       public Microsoft.TeamFoundation.Server.IdentityType IdentityType { get; set; }
     }
   }

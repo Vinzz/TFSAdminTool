@@ -12,13 +12,13 @@ namespace TFSAdministrationTool.Proxy.Common
     #endregion
 
     #region Methods
-    public void Add(bool isChecked, bool isSelected, string userName, string displayName, ChangeType change, string teamProject, string server, Guid instanceId, SystemTier tier, string role)
+    public void Add(bool isChecked, bool isSelected, string userName, string displayName, string email, ChangeType change, string teamProject, string server, Guid instanceId, SystemTier tier, string role)
     {
       // Check if there is an opposite pending changeset
       Guid guid = GetPendingChangeOpposite(userName, change, teamProject, instanceId, tier, role);
       if (guid == Guid.Empty)
       {
-        m_PendingChanges.Add(Guid.NewGuid(), new PendingChange(isChecked, isSelected, userName, displayName, change, teamProject, server, instanceId, tier, role));
+        m_PendingChanges.Add(Guid.NewGuid(), new PendingChange(isChecked, isSelected, userName, displayName, email, change, teamProject, server, instanceId, tier, role));
       }
       else
       {
@@ -213,6 +213,7 @@ namespace TFSAdministrationTool.Proxy.Common
     private bool m_Selected;
     private string m_UserName;
     private string m_DisplayName;
+    private string m_Email;
     private ChangeType m_ChangeType;
     private string m_TeamProject;
     private string m_Server;
@@ -222,12 +223,13 @@ namespace TFSAdministrationTool.Proxy.Common
     #endregion
 
     #region Constructors
-    public PendingChange(bool isChecked, bool isSelected, string userName, string displayName, ChangeType changeType, string teamProject, string server, Guid instanceId, SystemTier tier, string role)
+    public PendingChange(bool isChecked, bool isSelected, string userName, string displayName, string email, ChangeType changeType, string teamProject, string server, Guid instanceId, SystemTier tier, string role)
     {
       m_Checked = isChecked;
       m_Selected = isSelected;
       m_UserName = userName;
       m_DisplayName = displayName;
+      m_Email = email;
       m_ChangeType = changeType;
       m_TeamProject = teamProject;
       m_Server = server;
@@ -276,6 +278,14 @@ namespace TFSAdministrationTool.Proxy.Common
       {
         return m_DisplayName;
       }
+    }
+
+    public string Email
+    {
+        get
+        {
+            return m_Email;
+        }
     }
     
     public ChangeType ChangeType

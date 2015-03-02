@@ -141,6 +141,7 @@ namespace TFSAdministrationTool.Proxy.Common
     private UserState m_UserState;
     private string m_UserName;
     private string m_DisplayName;
+    private string m_Email;
     private Microsoft.TeamFoundation.Server.IdentityType m_IdentityType;
     private RoleInfoCollection m_TfsRoles;
     private RoleInfoCollection m_SpRoles;
@@ -187,7 +188,7 @@ namespace TFSAdministrationTool.Proxy.Common
 
     public static TfsUser Clone(TfsUser source)
     {
-      TfsUser target = new TfsUser() { m_UserName = source.UserName, m_DisplayName = source.DisplayName, m_UserState = source.State, m_IdentityType = source.IdentityType };
+        TfsUser target = new TfsUser() { m_UserName = source.UserName, m_DisplayName = source.DisplayName, m_Email = source.Email, m_UserState = source.State, m_IdentityType = source.IdentityType };
 
       foreach (RoleInfo s in source.m_TfsRoles.All)
         target.m_TfsRoles.Add(s.Name);
@@ -327,6 +328,18 @@ namespace TFSAdministrationTool.Proxy.Common
       {
         m_DisplayName = value;
       }
+    }
+
+    public string Email
+    {
+        get
+        {
+            return m_Email;
+        }
+        set
+        {
+            m_Email = value;
+        }
     }
 
     public Microsoft.TeamFoundation.Server.IdentityType IdentityType

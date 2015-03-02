@@ -178,7 +178,7 @@ namespace TFSAdministrationTool.Controllers
         if (user.State == UserState.Default)
         {
           // Add the pending change. We decided to keep this atomic so we add only one pending change
-          m_PendingChanges.Add(true, false, user.UserName, user.DisplayName, ChangeType.Delete, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.TeamFoundation, "All");
+          m_PendingChanges.Add(true, false, user.UserName, user.DisplayName, user.Email, ChangeType.Delete, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.TeamFoundation, "All");
         }
       }
       
@@ -220,7 +220,7 @@ namespace TFSAdministrationTool.Controllers
         Dictionary<string, ChangeType> tfsChanges = TfsUser.GetRoleChanges(sourceUser, targetUser, SystemTier.TeamFoundation);
         foreach (KeyValuePair<string, ChangeType> change in tfsChanges)
         {
-          m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.TeamFoundation, change.Key);
+            m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.TeamFoundation, change.Key);
         }
         
         /// This code is used by Import User feature as well and we need to make
@@ -232,7 +232,7 @@ namespace TFSAdministrationTool.Controllers
           Dictionary<string, ChangeType> spChanges = TfsUser.GetRoleChanges(sourceUser, targetUser, SystemTier.SharePoint);
           foreach (KeyValuePair<string, ChangeType> change in spChanges)
           {
-            m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.SharePoint, change.Key);
+              m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.SharePoint, change.Key);
           }
         }
 
@@ -244,7 +244,7 @@ namespace TFSAdministrationTool.Controllers
           Dictionary<string, ChangeType> rsChanges = TfsUser.GetRoleChanges(sourceUser, targetUser, SystemTier.ReportingServices);
           foreach (KeyValuePair<string, ChangeType> change in rsChanges)
           {
-            m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.ReportingServices, change.Key);
+              m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.ReportingServices, change.Key);
           }
         }
       }

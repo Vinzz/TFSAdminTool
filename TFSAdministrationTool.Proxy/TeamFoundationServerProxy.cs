@@ -242,7 +242,7 @@ namespace TFSAdministrationTool.Proxy
           // We add only Windows users and groups
           if (userIdentity.Type == IdentityType.WindowsUser || userIdentity.Type == IdentityType.WindowsGroup)
           {
-            sGroup.AddUser(userIdentity.Sid, userIdentity.Domain + "\\" + userIdentity.AccountName, userIdentity.DisplayName, userIdentity.Type);
+            sGroup.AddUser(userIdentity.Sid, userIdentity.Domain + "\\" + userIdentity.AccountName, userIdentity.DisplayName, userIdentity.MailAddress, userIdentity.Type);
           }
         }
 
@@ -267,6 +267,7 @@ namespace TFSAdministrationTool.Proxy
             TfsUser user = new TfsUser();
             user.UserName = member.UserName;
             user.DisplayName = member.DisplayName;
+            user.Email = member.Email;
             user.IdentityType = member.IdentityType;
             user.AddRole(sGroup.DisplayName, SystemTier.TeamFoundation);
 
