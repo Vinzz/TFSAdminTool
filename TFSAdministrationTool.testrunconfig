@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRunConfiguration name="Local Test Run" id="7cc116bd-104c-478c-b66d-b73cc204dc7b" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Description>This is a default test run configuration for a local test run.</Description>
+  <CodeCoverage enabled="true">
+    <Regular>
+      <CodeCoverageItem binaryFile="TFSAdministrationTool\bin\Debug\TFSAdministrationTool.exe" pdbFile="TFSAdministrationTool\bin\Debug\TFSAdministrationTool.pdb" instrumentInPlace="true" />
+      <CodeCoverageItem binaryFile="TFSAdministrationTool.Proxy\bin\Debug\TFSAdministrationTool.Proxy.dll" pdbFile="TFSAdministrationTool.Proxy\bin\Debug\TFSAdministrationTool.Proxy.pdb" instrumentInPlace="true" />
+    </Regular>
+  </CodeCoverage>
+  <Deployment>
+    <DeploymentItem filename="TFSAdministrationTool.Proxy\RoleConfig.xml" />
+  </Deployment>
+  <TestTypeSpecific>
+    <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">
+      <Browser name="Internet Explorer 7.0">
+        <Headers>
+          <Header name="User-Agent" value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" />
+          <Header name="Accept" value="*/*" />
+          <Header name="Accept-Language" value="{{$IEAcceptLanguage}}" />
+          <Header name="Accept-Encoding" value="GZIP" />
+        </Headers>
+      </Browser>
+      <Network Name="LAN" BandwidthInKbps="0" />
+    </WebTestRunConfiguration>
+  </TestTypeSpecific>
+</TestRunConfiguration>

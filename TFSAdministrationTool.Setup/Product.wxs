@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" 
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="*" 
+           Name="TFS Administration Tool" 
+           Language="1033" 
+           Version="2.3" 
+           Manufacturer="www.codeplex.com/tfsadmin" 
+           UpgradeCode="5053215D-63C6-4B01-AA83-E492343B69DB">
+    
+    <Package InstallerVersion="200" Compressed="yes" />
+    <MajorUpgrade
+       Schedule="afterInstallInitialize"
+       DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <!-- Define the folder that holds the binaries -->
+    <?define RAWFolder=../../Binaries/$(var.BUILD)/raw?>
+    
+    <!-- .NET Framework 4.5 -->
+    <PropertyRef Id="NETFRAMEWORK45"/>
+        
+    <!-- Microsoft Team Foundation Server 2013 Object Model -->
+    <Property Id='TFS2013OM'>
+      <RegistrySearch Id='TFS2013OMRegistry' Type='raw'
+        Root='HKLM' Key='SOFTWARE\Microsoft\TeamFoundationServer\12.0\InstalledComponents\ObjectModel' Name='Installed'/>
+    </Property>
+    
+    <!-- Administrator -->
+    <Condition Message="You need to be an administrator to install this product.">
+      <![CDATA[Privileged]]>
+    </Condition>
+
+    <!-- .NET Framework 4.5 -->
+    <Condition Message='This application requires Microsoft .NET Framework 4.5. Please install the .NET Framework 4.5 then run this installer again.'>
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
+    </Condition>
+    
+    <!-- Microsoft Team Foundation Server 2013 Object Model -->
+    <Condition Message="Team Foundation Server 2013 Object Model is not installed. Please install the standalone object model from http://aka.ms/TFSOM2013. Installing Visual Studio 2013 is not required, but it will also suffice.">
+      <![CDATA[TFS2013OM = "#1"]]>
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="TFS Administration Tool">
+          <Component Id="ProductComponent" Guid="fe18f3dc-0877-48c9-8249-1650e86937c9">
+
+            <CreateFolder>
+              <Permission User='Everyone' CreateChild='yes' GenericAll='yes'/>
+            </CreateFolder>
+
+            <File Id ="TFSAdministrationTool.exe" Source ="$(var.RAWFolder)/TFSAdministrationTool.exe" />
+            <File Id ="TFSAdministrationTool.pdb" Source ="$(var.RAWFolder)/TFSAdministrationTool.pdb" />
+            <File Id ="TFSAdministrationTool.exe.config" Source ="$(var.RAWFolder)/TFSAdministrationTool.exe.config" />
+            
+            <File Id ="TFSAdministrationTool.Proxy.dll" Source ="$(var.RAWFolder)/TFSAdministrationTool.Proxy.dll" />
+            <File Id ="TFSAdministrationTool.Proxy.pdb" Source ="$(var.RAWFolder)/TFSAdministrationTool.Proxy.pdb" />
+            
+            <File Id ="RoleConfig.xml" Source ="$(var.RAWFolder)/RoleConfig.xml" />
+
+            <Shortcut Id="TfsAdminShortcut"
+          Directory="ProgramMenuDir"
+          Advertise="yes"
+          Name="TFS Administration Tool"
+          WorkingDirectory="INSTALLLOCATION"
+          Icon="TfsAdminIcon.exe">
+              <Icon Id="TfsAdminIcon.exe" SourceFile="$(var.RAWFolder)/TFSAdministrationTool.exe" />
+            </Shortcut>
+
+            <CreateFolder Directory="Logs">
+              <Permission User="EVERYONE" CreateFile="yes" GenericRead="yes" GenericWrite="yes" Delete="yes" DeleteChild="yes" />              
+            </CreateFolder>
+
+            <RemoveFile Id="RemoveLogFiles" Directory="Logs" Name="*.log" On="uninstall" />
+            <RemoveFolder Id="DeleteLogsFolder" Directory="Logs" On="uninstall" />
+            <RemoveFolder Id="DeleteShortcutFolder" Directory="ProgramMenuDir" On="uninstall" />
+          </Component>
+          <Directory Id="Logs" Name="Logs"/>
+          <Directory Id="ProgramMenuFolder" Name="Programs">
+            <Directory Id="ProgramMenuDir" Name="TFS Administration Tool" />
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="TFSAdministrationTool.Setup" Level="1">
+      <ComponentRef Id="ProductComponent" />
+    </Feature>
+    
+    <UIRef Id="WixUI_InstallDir"/>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+    <!-- Add/Remove Programs (ARP) entry.-->
+    <Property Id="ARPPRODUCTICON">TfsAdminIcon.exe</Property>
+    <Property Id="ARPHELPLINK"><![CDATA[http://www.codeplex.com/tfsadmin]]></Property>
+    <Property Id="ARPURLINFOABOUT"><![CDATA[http://www.codeplex.com/tfsadmin]]></Property>
+    <Property Id="ARPCOMMENTS"><![CDATA[The TFS Administration Tool allows the Team Foundation Server administrator to manage user permissions across Team Foundation Server, SharePoint, SQL Server Reporting Services using a single application.]]></Property>
+  </Product>
+</Wix>
