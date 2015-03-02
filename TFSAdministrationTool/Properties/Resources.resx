@@ -2401,15 +2401,281 @@ TFS Administration Tool is a joint Microsoft and community effort to bring you a
     <value>User(s) ({0}) cannot be resolved.</value>
   </data>
   <data name="NotificationBody" xml:space="preserve">
-    <value>The following changes were performed regarding your TFS subscription:
-
-{0}
-
-Regards,
-Your TFS Admin</value>
+    <value>&lt;html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"&gt;
+   &lt;head&gt;
+      &lt;meta http-equiv=Content-Type content="text/html; charset=utf-8"&gt;
+      &lt;meta name=Generator content="Microsoft Word 15 (filtered medium)"&gt;
+      &lt;style&gt;
+         &lt;!--
+            /* Font Definitions */
+            @font-face
+            	{font-family:Wingdings;
+            	panose-1:5 0 0 0 0 0 0 0 0 0;}
+            @font-face
+            	{font-family:"Cambria Math";
+            	panose-1:2 4 5 3 5 4 6 3 2 4;}
+            @font-face
+            	{font-family:Calibri;
+            	panose-1:2 15 5 2 2 2 4 3 2 4;}
+            @font-face
+            	{font-family:Consolas;
+            	panose-1:2 11 6 9 2 2 4 3 2 4;}
+            /* Style Definitions */
+            p.MsoNormal, li.MsoNormal, div.MsoNormal
+            	{margin:0cm;
+            	margin-bottom:.0001pt;
+            	font-size:11.0pt;
+            	font-family:"Calibri",sans-serif;
+            	mso-fareast-language:EN-US;}
+            a:link, span.MsoHyperlink
+            	{mso-style-priority:99;
+            	color:#0563C1;
+            	text-decoration:underline;}
+            a:visited, span.MsoHyperlinkFollowed
+            	{mso-style-priority:99;
+            	color:#954F72;
+            	text-decoration:underline;}
+            p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+            	{mso-style-priority:99;
+            	mso-style-link:"Plain Text Char";
+            	margin:0cm;
+            	margin-bottom:.0001pt;
+            	font-size:11.0pt;
+            	font-family:"Calibri",sans-serif;
+            	mso-fareast-language:EN-US;}
+            span.PlainTextChar
+            	{mso-style-name:"Plain Text Char";
+            	mso-style-priority:99;
+            	mso-style-link:"Plain Text";
+            	font-family:"Calibri",sans-serif;}
+            p.Pucesniv1, li.Pucesniv1, div.Pucesniv1
+            	{mso-style-name:"Puces niv1";
+            	margin-top:0cm;
+            	margin-right:0cm;
+            	margin-bottom:0cm;
+            	margin-left:36.0pt;
+            	margin-bottom:.0001pt;
+            	text-indent:-18.0pt;
+            	mso-list:l0 level1 lfo1;
+            	font-size:11.0pt;
+            	font-family:"Calibri",sans-serif;
+            	mso-fareast-language:EN-US;}
+            .MsoChpDefault
+            	{mso-style-type:export-only;
+            	font-family:"Calibri",sans-serif;
+            	mso-fareast-language:EN-US;}
+            @page WordSection1
+            	{size:612.0pt 792.0pt;
+            	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+            div.WordSection1
+            	{page:WordSection1;}
+            /* List Definitions */
+            @list l0
+            	{mso-list-id:867303551;
+            	mso-list-type:hybrid;
+            	mso-list-template-ids:-1850704744 541255134 67895299 67895301 67895297 67895299 67895301 67895297 67895299 67895301;}
+            @list l0:level1
+            	{mso-level-number-format:bullet;
+            	mso-level-style-link:"Puces niv1";
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	mso-ansi-font-size:10.0pt;
+            	mso-bidi-font-size:10.0pt;
+            	font-family:Wingdings;
+            	color:#FF6600;}
+            @list l0:level2
+            	{mso-level-number-format:bullet;
+            	mso-level-text:o;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:"Courier New";}
+            @list l0:level3
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Wingdings;}
+            @list l0:level4
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Symbol;}
+            @list l0:level5
+            	{mso-level-number-format:bullet;
+            	mso-level-text:o;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:"Courier New";}
+            @list l0:level6
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Wingdings;}
+            @list l0:level7
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Symbol;}
+            @list l0:level8
+            	{mso-level-number-format:bullet;
+            	mso-level-text:o;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:"Courier New";}
+            @list l0:level9
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Wingdings;}
+            @list l1
+            	{mso-list-id:1002898943;
+            	mso-list-type:hybrid;
+            	mso-list-template-ids:-1743237488 540180558 67895299 67895301 67895297 67895299 67895301 67895297 67895299 67895301;}
+            @list l1:level1
+            	{mso-level-start-at:0;
+            	mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Symbol;
+            	mso-fareast-font-family:Calibri;
+            	mso-bidi-font-family:Consolas;}
+            @list l1:level2
+            	{mso-level-number-format:bullet;
+            	mso-level-text:o;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:"Courier New";}
+            @list l1:level3
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Wingdings;}
+            @list l1:level4
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Symbol;}
+            @list l1:level5
+            	{mso-level-number-format:bullet;
+            	mso-level-text:o;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:"Courier New";}
+            @list l1:level6
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Wingdings;}
+            @list l1:level7
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Symbol;}
+            @list l1:level8
+            	{mso-level-number-format:bullet;
+            	mso-level-text:o;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:"Courier New";}
+            @list l1:level9
+            	{mso-level-number-format:bullet;
+            	mso-level-text:;
+            	mso-level-tab-stop:none;
+            	mso-level-number-position:left;
+            	text-indent:-18.0pt;
+            	font-family:Wingdings;}
+            ol
+            	{margin-bottom:0cm;}
+            ul
+            	{margin-bottom:0cm;}
+            --&gt;
+      &lt;/style&gt;
+      &lt;!--[if gte mso 9]&gt;
+      &lt;xml&gt;
+         &lt;o:shapedefaults v:ext="edit" spidmax="1026" /&gt;
+      &lt;/xml&gt;
+      &lt;![endif]--&gt;&lt;!--[if gte mso 9]&gt;
+      &lt;xml&gt;
+         &lt;o:shapelayout v:ext="edit"&gt;
+            &lt;o:idmap v:ext="edit" data="1" /&gt;
+         &lt;/o:shapelayout&gt;
+      &lt;/xml&gt;
+      &lt;![endif]--&gt;
+   &lt;/head&gt;
+   &lt;body lang=FR link="#0563C1" vlink="#954F72"&gt;
+      &lt;div class=WordSection1&gt;
+         &lt;p class=MsoPlainText&gt;
+            &lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;
+         &lt;/p&gt;
+         &lt;p class=MsoPlainText&gt;
+            Les changements suivants ont étés apportés à votre inscription TFS&amp;nbsp;:
+            &lt;o:p&gt;&lt;/o:p&gt;
+         &lt;/p&gt;
+         &lt;p class=MsoPlainText&gt;
+            &lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;
+         &lt;/p&gt;
+         {0}
+         &lt;p class=MsoPlainText&gt;
+            &lt;span lang=EN-US&gt;
+               &lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;
+            &lt;/span&gt;
+         &lt;/p&gt;
+         &lt;p class=MsoPlainText&gt;
+            Pour tout renseignement complémentaire, adressez-vous à la &lt;a href="mailto:forgenet.oab@orange.com"&gt;liste de diffusion Forge .NET&lt;/a&gt;
+            &lt;o:p&gt;&lt;/o:p&gt;
+         &lt;/p&gt;
+         &lt;p class=MsoPlainText&gt;
+            &lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;
+         &lt;/p&gt;
+         &lt;p class=MsoPlainText&gt;
+            Sincèrement,
+            &lt;o:p&gt;&lt;/o:p&gt;
+         &lt;/p&gt;
+         &lt;p class=MsoPlainText&gt;
+            &lt;span style='color:black'&gt;
+               Votre administrateur TFS
+               &lt;o:p&gt;&lt;/o:p&gt;
+            &lt;/span&gt;
+         &lt;/p&gt;
+      &lt;/div&gt;
+   &lt;/body&gt;
+&lt;/html&gt;</value>
   </data>
   <data name="NotificationLine" xml:space="preserve">
-    <value>* Project {0}\{1} : {2} role {3} in {4}</value>
+    <value>&lt;p class=Pucesniv1 style='mso-list:l0 level1 lfo1'&gt;
+	&lt;![if !supportLists]&gt;&lt;span lang=EN-US style='font-size:10.0pt;font-family:Wingdings;color:#FF6600'&gt;&lt;span style='mso-list:Ignore'&gt;§&lt;span style='font:7.0pt "Times New Roman"'&gt;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;![endif]&gt;
+	&lt;span lang=EN-US&gt;
+	   Project {0}\{1} : &lt;b&gt;{2} role {3}&lt;/b&gt; in tier &lt;i&gt;{4}&lt;/i&gt; 
+	   &lt;o:p&gt;&lt;/o:p&gt;
+	&lt;/span&gt;
+ &lt;/p&gt;</value>
   </data>
   <data name="NotificationSubject" xml:space="preserve">
     <value>Changes in your TFS subscription</value>
