@@ -4,7 +4,7 @@
   <Product Id="*" 
            Name="TFS Administration Tool" 
            Language="1033" 
-           Version="2.3" 
+           Version="2.3.1" 
            Manufacturer="www.codeplex.com/tfsadmin" 
            UpgradeCode="5053215D-63C6-4B01-AA83-E492343B69DB">
     
@@ -16,7 +16,7 @@
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
     <!-- Define the folder that holds the binaries -->
-    <?define RAWFolder=../../Binaries/$(var.BUILD)/raw?>
+    <?define RAWFolder=../TFSAdministrationTool/Bin/$(var.Configuration)/?>
     
     <!-- .NET Framework 4.5 -->
     <PropertyRef Id="NETFRAMEWORK45"/>

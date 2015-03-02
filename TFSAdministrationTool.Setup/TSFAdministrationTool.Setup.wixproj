@@ -17,7 +17,7 @@
     <Name>TSFAdministrationTool.Setup</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>../../Binaries/$(Configuration)/layout\</OutputPath>
+    <OutputPath>.\bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug;BUILD=Debug</DefineConstants>
     <WixVariables>
