@@ -731,13 +731,16 @@ namespace TFSAdministrationTool
             StartTask(statusMessage);
 
             /// Construct the notification
-            NotificationLine notif = new NotificationLine(pendingChange);
-            if (!notifier.Notifications.ContainsKey(pendingChange.Email))
-            {
-                notifier.Notifications[pendingChange.Email] = new List<NotificationLine>();
+            if (pendingChange.Email != null && Properties.Settings.Default.NotifyUsersByEmail)
+            { 
+                NotificationLine notif = new NotificationLine(pendingChange);
+                if (!notifier.Notifications.ContainsKey(pendingChange.Email))
+                {
+                    notifier.Notifications[pendingChange.Email] = new List<NotificationLine>();
+                }
+                notifier.Notifications[pendingChange.Email].Add(notif);
             }
-
-            notifier.Notifications[pendingChange.Email].Add(notif);
+           
 
             /// Perform the Task Using the Controller
             Status status = MainController.OnCommitChange(pendingChange);
