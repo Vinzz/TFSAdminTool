@@ -732,7 +732,8 @@ namespace TFSAdministrationTool
 
             /// Construct the notification
             if (pendingChange.Email != null && Properties.Settings.Default.NotifyUsersByEmail)
-            { 
+            {
+                TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, string.Format("Construct notification for {0} for {1}", pendingChange.Email, statusMessage));
                 NotificationLine notif = new NotificationLine(pendingChange);
                 if (!notifier.Notifications.ContainsKey(pendingChange.Email))
                 {
