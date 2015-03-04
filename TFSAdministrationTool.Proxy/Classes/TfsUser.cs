@@ -32,7 +32,7 @@ namespace TFSAdministrationTool.Proxy.Common
         int index = GetUserIndex(change.UserName);
         if (index == -1)
         {
-          m_TfsUser.Add(new TfsUser() { State = UserState.New, UserName = change.UserName, DisplayName = change.DisplayName });
+          m_TfsUser.Add(new TfsUser() { State = UserState.New, UserName = change.UserName, DisplayName = change.DisplayName, Email = change.Email });
           index = m_TfsUser.Count - 1;
         }
 

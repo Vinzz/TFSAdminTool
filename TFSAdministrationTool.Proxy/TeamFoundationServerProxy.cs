@@ -349,7 +349,7 @@ namespace TFSAdministrationTool.Proxy
       Identity userIdentity = GetUserIdentity(userName);
       if (userIdentity != null)
       {
-        return new TfsUser() { UserName = userIdentity.Domain + "\\" + userIdentity.AccountName, DisplayName = userIdentity.DisplayName };
+        return new TfsUser() { UserName = userIdentity.Domain + "\\" + userIdentity.AccountName, DisplayName = userIdentity.DisplayName, Email = userIdentity.MailAddress };
       }
 
       return null;
