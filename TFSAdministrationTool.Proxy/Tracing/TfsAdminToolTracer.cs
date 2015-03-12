@@ -20,7 +20,7 @@ namespace TFSAdministrationTool.Proxy.Common
       m_TextBoxTraceListener.Flush();
       m_TextBoxTraceListener.Close();      
       Trace.Listeners.Remove(m_TextBoxTraceListener);
-
+        dfgdfsgdsf
       FlushToLogFile();
     }
 
