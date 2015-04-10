@@ -659,6 +659,7 @@ namespace TFSAdministrationTool
     {
       try
       {
+          // commentaire joli
         MainController.PendingChanges.UpdateSelected(new Guid(e.Item.Name), e.IsSelected);
 
         if (pendingChangesListView.SelectedItems.Count > 0)

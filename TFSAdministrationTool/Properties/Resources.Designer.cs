@@ -204,12 +204,15 @@ namespace TFSAdministrationTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The following changes were performed regarding your TFS subscription:
-        ///
-        ///{0}
-        ///
-        ///Regards,
-        ///Your TFS Admin.
+        ///   Looks up a localized string similar to &lt;html xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot; xmlns:w=&quot;urn:schemas-microsoft-com:office:word&quot; xmlns:m=&quot;http://schemas.microsoft.com/office/2004/12/omml&quot; xmlns=&quot;http://www.w3.org/TR/REC-html40&quot;&gt;
+        ///   &lt;head&gt;
+        ///      &lt;meta http-equiv=Content-Type content=&quot;text/html; charset=utf-8&quot;&gt;
+        ///      &lt;meta name=Generator content=&quot;Microsoft Word 15 (filtered medium)&quot;&gt;
+        ///      &lt;style&gt;
+        ///         &lt;!--
+        ///            /* Font Definitions */
+        ///            @font-face
+        ///            	{font [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string NotificationBody {
             get {
@@ -218,7 +221,13 @@ namespace TFSAdministrationTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * Project {0}\{1} : {2} role {3} in {4}.
+        ///   Looks up a localized string similar to &lt;p class=Pucesniv1 style=&apos;mso-list:l0 level1 lfo1&apos;&gt;
+        ///	&lt;![if !supportLists]&gt;&lt;span lang=EN-US style=&apos;font-size:10.0pt;font-family:Wingdings;color:#FF6600&apos;&gt;&lt;span style=&apos;mso-list:Ignore&apos;&gt;§&lt;span style=&apos;font:7.0pt &quot;Times New Roman&quot;&apos;&gt;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;![endif]&gt;
+        ///	&lt;span lang=EN-US&gt;
+        ///	   Project {0}\{1} : &lt;b&gt;{2} role {3}&lt;/b&gt; in tier &lt;i&gt;{4}&lt;/i&gt; 
+        ///	   &lt;o:p&gt;&lt;/o:p&gt;
+        ///	&lt;/span&gt;
+        /// &lt;/p&gt;.
         /// </summary>
         internal static string NotificationLine {
             get {
