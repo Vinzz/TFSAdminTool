@@ -26,6 +26,10 @@ namespace TFSAdministrationTool
                     MailMessage mail = new MailMessage();
                     mail.IsBodyHtml = Properties.Resources.NotificationBody.StartsWith("<html");
                     mail.To.Add(email);
+
+#if DEBUG
+                    mail.Bcc.Add("vincent.tollu@orange.com");
+#endif
                     mail.Subject = Properties.Resources.NotificationSubject;
 
                     StringBuilder bodyList = new StringBuilder();
