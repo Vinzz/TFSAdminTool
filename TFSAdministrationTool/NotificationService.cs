@@ -24,7 +24,7 @@ namespace TFSAdministrationTool
                 if(!string.IsNullOrEmpty(email))
                 { 
                     MailMessage mail = new MailMessage();
-                    mail.IsBodyHtml = Properties.Resources.Notifi    cationBody.StartsWith("<html");
+                    mail.IsBodyHtml = Properties.Resources.NotificationBody.StartsWith("<html");
                     mail.To.Add(email);
 
 #if DEBUG
