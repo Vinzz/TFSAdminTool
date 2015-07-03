@@ -1,0 +1,182 @@
+<Activity x:Class="TfsBuild.Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mt="clr-namespace:Microsoft.TeamFoundation;assembly=Microsoft.TeamFoundation.Common" xmlns:mtbc="clr-namespace:Microsoft.TeamFoundation.Build.Client;assembly=Microsoft.TeamFoundation.Build.Client" xmlns:mtbco="clr-namespace:Microsoft.TeamFoundation.Build.Common;assembly=Microsoft.TeamFoundation.Build.Common" xmlns:mtbw="clr-namespace:Microsoft.TeamFoundation.Build.Workflow;assembly=Microsoft.TeamFoundation.Build.Workflow" xmlns:mtbwa="clr-namespace:Microsoft.TeamFoundation.Build.Workflow.Activities;assembly=Microsoft.TeamFoundation.Build.Workflow" xmlns:mtba="clr-namespace:Microsoft.TeamFoundation.Build.Activities;assembly=Microsoft.TeamFoundation.Build.Activities" xmlns:mtbac="clr-namespace:Microsoft.TeamFoundation.Build.Activities.Core;assembly=Microsoft.TeamFoundation.Build.Activities" xmlns:mtbag="clr-namespace:Microsoft.TeamFoundation.Build.Activities.Git;assembly=Microsoft.TeamFoundation.Build.Activities" xmlns:mtbwt="clr-namespace:Microsoft.TeamFoundation.Build.Workflow.Tracking;assembly=Microsoft.TeamFoundation.Build.Workflow" xmlns:mttbb="clr-namespace:Microsoft.TeamFoundation.TestImpact.BuildIntegration.BuildActivities;assembly=Microsoft.TeamFoundation.TestImpact.BuildIntegration" xmlns:mtvc="clr-namespace:Microsoft.TeamFoundation.VersionControl.Client;assembly=Microsoft.TeamFoundation.VersionControl.Client" xmlns:mtvco="clr-namespace:Microsoft.TeamFoundation.VersionControl.Common;assembly=Microsoft.TeamFoundation.VersionControl.Common" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sad="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sad1="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:this="clr-namespace:TfsBuild;" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ProjectsToBuild" Type="InArgument(s:String[])" />
+    <x:Property Name="ConfigurationsToBuild" Type="InArgument(s:String[])" />
+    <x:Property Name="AutomatedTests" Type="InArgument(mtbco:BuildParameter[])" />
+    <x:Property Name="AdvancedTestSettings" Type="InArgument(mtbco:BuildParameter)" />
+    <x:Property Name="BuildNumberFormat" Type="InArgument(x:String)" />
+    <x:Property Name="CleanRepository" Type="InArgument(x:Boolean)" />
+    <x:Property Name="AdvancedBuildSettings" Type="InArgument(mtbco:BuildParameter)" />
+    <x:Property Name="AgentSettings" Type="InArgument(mtbco:BuildParameter)" />
+    <x:Property Name="CleanBuild" Type="InArgument(x:Boolean)" />
+    <x:Property Name="CheckoutOverride" Type="InArgument(x:String)" />
+    <x:Property Name="OutputLocation" Type="InArgument(x:String)" />
+    <x:Property Name="SymbolStorePath" Type="InArgument(x:String)" />
+    <x:Property Name="CreateWorkItem" Type="InArgument(x:Boolean)" />
+    <x:Property Name="UpdateAssociatedWorkItems" Type="InArgument(x:Boolean)" />
+    <x:Property Name="Metadata" Type="mtbw:ProcessParameterMetadataCollection" />
+    <x:Property Name="SupportedReasons" Type="mtbc:BuildReason" />
+    <x:Property Name="BuildProcessVersion" Type="x:String" />
+  </x:Members>
+  <this:Process.ProjectsToBuild>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:Process.ProjectsToBuild>
+  <this:Process.ConfigurationsToBuild>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:Process.ConfigurationsToBuild>
+  <this:Process.BuildNumberFormat>["$(BuildDefinitionName)_$(Date:yyyyMMdd)$(Rev:.r)"]</this:Process.BuildNumberFormat>
+  <this:Process.AutomatedTests>[{ New Microsoft.TeamFoundation.Build.Common.BuildParameter("
+  { 
+    ""AssemblyFileSpec"": ""**\\*test*.dll;**\\*test*.appx"", 
+    ""RunSettingsFileName"": null, 
+    ""TestCaseFilter"": """", 
+    ""RunSettingsForTestRun"": 
+      { 
+        ""ServerRunSettingsFile"": """", 
+        ""TypeRunSettings"": ""Default"", 
+        ""HasRunSettingsFile"": false
+      }, 
+    ""HasRunSettingsFile"": false, 
+    ""HasTestCaseFilter"": false,
+    ""ExecutionPlatform"": ""X86"", 
+    ""FailBuildOnFailure"": false, 
+    ""RunName"": """"
+  }
+  ")
+  }]</this:Process.AutomatedTests>
+  <this:Process.CleanRepository>[True]</this:Process.CleanRepository>
+  <this:Process.CleanBuild>[True]</this:Process.CleanBuild>
+  <this:Process.CheckoutOverride>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.CheckoutOverride>
+  <this:Process.OutputLocation>["SingleFolder"]</this:Process.OutputLocation>
+  <this:Process.AgentSettings>[New Microsoft.TeamFoundation.Build.Common.BuildParameter("
+  { 
+  ""MaxExecutionTime"": ""00:00:00"", 
+  ""MaxWaitTime"": ""04:00:00"", 
+  ""Name"": ""*"", 
+  ""Tags"": [], 
+  ""TagComparison"": ""MatchExactly""
+  }
+  ")]</this:Process.AgentSettings>
+  <this:Process.AdvancedBuildSettings>
+  [New Microsoft.TeamFoundation.Build.Common.BuildParameter("
+  {
+  ""MSBuildArguments"": """",
+  ""MSBuildPlatform"": ""Auto"",
+  ""PreActionScriptPath"": """",
+  ""PreActionScriptArguments"": """",
+  ""PostActionScriptPath"": """",
+  ""PostActionScriptArguments"": """",
+  ""RunCodeAnalysis"": ""AsConfigured""
+  }
+  ")]
+  </this:Process.AdvancedBuildSettings>
+  <this:Process.AdvancedTestSettings>
+  [New Microsoft.TeamFoundation.Build.Common.BuildParameter("
+  {
+  ""DisableTests"": false,
+  ""PreActionScriptPath"": """",
+  ""PreActionScriptArguments"": """",
+  ""PostActionScriptPath"": """",
+  ""PostActionScriptArguments"": """"
+  }
+  ")]
+  </this:Process.AdvancedTestSettings>
+  <this:Process.SymbolStorePath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.SymbolStorePath>
+  <this:Process.CreateWorkItem>[True]</this:Process.CreateWorkItem>
+  <this:Process.UpdateAssociatedWorkItems>[True]</this:Process.UpdateAssociatedWorkItems>
+  <this:Process.Metadata>
+    <mtbw:ProcessParameterMetadataCollection>
+      <mtbw:ProcessParameterMetadata ParameterName="CleanRepository" BrowsableWhen="Always" Category="#100 Git" DisplayName="1. Clean repository" Description="Set this to true to start with a clean repository on each build." />
+      <mtbw:ProcessParameterMetadata ParameterName="CheckoutOverride" BrowsableWhen="Always" Category="#100 Git" DisplayName="2. Checkout override" Description="Specify the id of a checkout to override the default branch and commit." />
+      <mtbw:ProcessParameterMetadata ParameterName="ProjectsToBuild" BrowsableWhen="EditingDefinition" Category="#200 Build" DisplayName="1. Projects" Description="Relative paths to the solution/project files you want to build." Required="True" Editor="Microsoft.TeamFoundation.Build.Controls.BuildProjectListRelativePathEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="ConfigurationsToBuild" BrowsableWhen="EditingDefinition" Category="#200 Build" DisplayName="2. Configurations" Description="Specify the configurations you want to build (i.e. Debug|x86)." Editor="Microsoft.TeamFoundation.Build.Controls.PlatformConfigurationListEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="CleanBuild" BrowsableWhen="Always" Category="#200 Build" DisplayName="3. Clean build" Description="Set this to true to perform a clean build." />
+      <mtbw:ProcessParameterMetadata ParameterName="OutputLocation" BrowsableWhen="EditingDefinition" Category="#200 Build" DisplayName="4. Output location" Description="Specify the type of location that outputs should be created in: SingleFolder, PerProject, AsConfigured." Editor="@DropDownList=SingleFolder,PerProject,AsConfigured" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings" BrowsableWhen="Always" Category="#200 Build" DisplayName="5. Advanced" Description="" ValueFormatString=" " />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings.MSBuildArguments" BrowsableWhen="Always" DisplayName="MSBuild arguments" Description="Specify additional MSBuild arguments." />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings.MSBuildPlatform" BrowsableWhen="EditingDefinition" DisplayName="MSBuild platform" Description="Specify the MSBuild platform to use. Defaults to the OS." Editor="@DropDownList=Auto,X86" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings.PreActionScriptPath" BrowsableWhen="EditingDefinition" DisplayName="Pre-build script path" Description="Specify the path to a custom script that runs before the MSBuild activity starts." ValueFormatString="" Editor="Microsoft.TeamFoundation.Build.Controls.GitLocalFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings.PreActionScriptArguments" BrowsableWhen="EditingDefinition" DisplayName="Pre-build script arguments" Description="Specify the command line arguments to pass to the script that runs before the MSBuild activity starts." ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings.PostActionScriptPath" BrowsableWhen="EditingDefinition" DisplayName="Post-build script path" Description="Specify the path to a custom script that runs after the MSBuild activity successfully completes." ValueFormatString="" Editor="Microsoft.TeamFoundation.Build.Controls.GitLocalFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings.PostActionScriptArguments" BrowsableWhen="EditingDefinition" DisplayName="Post-build script arguments" Description="Specify the command line arguments to pass to the script that runs after the MSBuild activity successfully completes." ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedBuildSettings.RunCodeAnalysis" BrowsableWhen="EditingDefinition" DisplayName="Perform code analysis" Description="Specify AsConfigured to run code analysis according to project settings; Never to never run code analysis; Always to always run code analysis." Editor="@DropDownList=Never,AsConfigured,Always" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests" BrowsableWhen="EditingDefinition" Category="#250 Test" DisplayName="1. Automated tests" Description="Specify the test assemblies or test metadata files on which to run tests.  You can skip running these tests by setting the Disable Tests setting to True." ValueFormatString="{}{Count} set(s) of tests specified." Editor="Microsoft.TeamFoundation.Build.Controls.AgileTestSpecListEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.[Item]" BrowsableWhen="Always" DisplayName="Test source" ValueFormatString="{}{RunName} - Run tests in test sources matching {AssemblyFileSpec}, Target platform: '{ExecutionPlatform}'" Editor="Microsoft.TeamFoundation.Build.Controls.AgileTestSpecEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.AssemblyFileSpec" BrowsableWhen="Always" DisplayName="Test sources spec" Description="Specify the search pattern for locating test sources - e.g., **\\*test*.dll." />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.HasRunSettingsFile" BrowsableWhen="Never" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.HasTestCaseFilter" BrowsableWhen="Never" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.RunSettingsFileName" BrowsableWhen="Never" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.TestCaseFilter" BrowsableWhen="Always" DisplayName="Test case filter" Description="Use the specified filter to select tests to run based on filter criteria.  You can use the format &lt;property&gt;Operator&lt;value&gt; to construct your filter where Operator is one of =, != or ~ (Operator ~ has 'contains' semantics and is applicable for string properties like DisplayName).  You can also use the logical operator |, to construct your filter and parenthesis () for grouping.  For example, (FullyQualifiedName~Nightly|Name=MyTestMethod)" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.RunSettingsForTestRun" BrowsableWhen="Always" DisplayName="Run settings" Description="Specify run settings to be used for running the tests." />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.RunSettingsForTestRun.ServerRunSettingsFile" BrowsableWhen="Always" DisplayName="Run settings file" Description="Specify the Run Settings file to use with the test sources." Editor="Microsoft.TeamFoundation.Build.Controls.GitRunSettingsFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.RunSettingsForTestRun.TypeRunSettings" BrowsableWhen="Always" DisplayName="Type of run settings" Description="Select the type of run settings to use with test sources.  Values are Default, CodeCoverageEnabled, CodeCoverageEnabledForAspNetApps, UserSpecified." Editor="@DropDownList=Default,CodeCoverageEnabled,CodeCoverageEnabledForAspNetApps,UserSpecified" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.RunSettingsForTestRun.HasRunSettingsFile" BrowsableWhen="Never" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.ExecutionPlatform" BrowsableWhen="Always" DisplayName="Target platform for test execution" Description="Specify target platform for test execution.  X86 or X64" Editor="@DropDownList=X86,X64" />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.FailBuildOnFailure" BrowsableWhen="Always" DisplayName="Fail build on test failure" Description="Set this to true to fail any builds where these tests do not pass.  The default is to mark the build as partially succeeded if the tests fail." />
+      <mtbw:ProcessParameterMetadata ParameterName="AutomatedTests.RunName" BrowsableWhen="Always" DisplayName="Test run name" Description="Specify the name the test run is published as." />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedTestSettings" BrowsableWhen="Always" Category="#250 Test" DisplayName="2. Advanced" Description="" ValueFormatString=" " />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedTestSettings.DisableTests" BrowsableWhen="Always" Category="#250 Test" DisplayName="Disable tests" Description="Specify True to skip running all tests with the build; False to run tests as defined by the Automated Tests setting." />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedTestSettings.PreActionScriptPath" BrowsableWhen="EditingDefinition" DisplayName="Pre-test script path" Description="Specify the path to a custom script that runs before the RunAgileTestRunner activity starts." ValueFormatString="" Editor="Microsoft.TeamFoundation.Build.Controls.GitLocalFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedTestSettings.PreActionScriptArguments" BrowsableWhen="EditingDefinition" DisplayName="Pre-test script arguments" Description="Specify the command line arguments to pass to the script that runs before the RunAgileTestRunner activity starts." ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedTestSettings.PostActionScriptPath" BrowsableWhen="EditingDefinition" DisplayName="Post-test script path" Description="Specify the path to a custom script that runs after the RunAgileTestRunner activity successfully completes." ValueFormatString="" Editor="Microsoft.TeamFoundation.Build.Controls.GitLocalFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AdvancedTestSettings.PostActionScriptArguments" BrowsableWhen="EditingDefinition" DisplayName="Post-test script arguments" Description="Specify the command line arguments to pass to the script that runs after the RunAgileTestRunner activity successfully completes." ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata ParameterName="SymbolStorePath" BrowsableWhen="EditingDefinition" Category="#300 Publish Symbols" DisplayName="Path to publish symbols" Description="Specify the path to the symbol store share.  When this value is set, source indexing is a part of the build.  Source indexing is never performed for private builds." />
+      <mtbw:ProcessParameterMetadata ParameterName="BuildNumberFormat" BrowsableWhen="EditingDefinition" Category="#400 Advanced" DisplayName="Build number format" Description="Specify the format for the number of this build." Editor="Microsoft.TeamFoundation.Build.Controls.BuildNumberFormatEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AgentSettings" BrowsableWhen="EditingDefinition" Category="#400 Advanced" DisplayName="Agent settings" Description="Specify the Name and/or Tags (and other properties) that will be used to select an appropriate Agent for the build." ValueFormatString="Use agent where Name={Name} and Tags={Tags} ({TagComparison})" />
+      <mtbw:ProcessParameterMetadata ParameterName="AgentSettings.MaxExecutionTime" BrowsableWhen="Always" DisplayName="Maximum agent execution time" Description="Specify the maximum amount of time that you want to allow for this part of the work flow to run. The default value is zero which means there is no timeout." Editor="@Type=TimeSpan" />
+      <mtbw:ProcessParameterMetadata ParameterName="AgentSettings.MaxWaitTime" BrowsableWhen="Always" DisplayName="Maximum agent reservation wait time" Description="Specify the maximum amount of time that you want to allow waiting for an agent. The default value is zero which means there is no timeout." Editor="@Type=TimeSpan" />
+      <mtbw:ProcessParameterMetadata ParameterName="AgentSettings.Name" BrowsableWhen="Always" DisplayName="Name filter" Description="Specify the agent to use for this remote execution by display name (this is not the computer name). Supported wildcard characters include '*' and '?'." Editor="Microsoft.TeamFoundation.Build.Controls.BuildAgentSelectionEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="AgentSettings.TagComparison" BrowsableWhen="Always" DisplayName="Tag comparison operator" Description="Specify the comparison method to use for tags when selecting a build agent. MatchExactly, MatchAtLeast" Editor="@DropDownList=MatchExactly,MatchAtLeast" />
+      <mtbw:ProcessParameterMetadata ParameterName="AgentSettings.Tags" BrowsableWhen="Always" DisplayName="Tags filter" Description="Specify the tags used to select the build agent." Editor="Microsoft.TeamFoundation.Build.Controls.TagsEditor, Microsoft.TeamFoundation.Build.Controls" />
+      <mtbw:ProcessParameterMetadata ParameterName="CreateWorkItem" BrowsableWhen="Always" Category="#400 Advanced" DisplayName="Create work item on failure" Description="Set this to true to create a work item when the build fails." />
+      <mtbw:ProcessParameterMetadata ParameterName="UpdateAssociatedWorkItems" BrowsableWhen="Always" Category="#400 Advanced" DisplayName="Update work items with build number" Description="Set this to true to update the associated work items by setting the Fixed In Build field to the build number of this build." />
+    </mtbw:ProcessParameterMetadataCollection>
+  </this:Process.Metadata>
+  <this:Process.SupportedReasons>Manual, IndividualCI, BatchedCI, Schedule, ScheduleForced, UserCreated</this:Process.SupportedReasons>
+  <this:Process.BuildProcessVersion>12.0</this:Process.BuildProcessVersion>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
+  <Sequence DisplayName="Overall build process">
+    <mtbac:SetBuildNumber DisplayName="Update build number" BuildNumberFormat="[BuildNumberFormat]" />
+    <mtbwa:AgentScope DisplayName="Run on agent" MaxExecutionTime="[AgentSettings.GetValue(Of TimeSpan)(&quot;MaxExecutionTime&quot;, New System.TimeSpan(0,0,0))]" MaxWaitTime="[AgentSettings.GetValue(Of TimeSpan)(&quot;MaxWaitTime&quot;, New System.TimeSpan(4,0,0))]" ReservationSpec="[AgentSettings.CreateAgentReservationSpec()]">
+      <mtbac:InitializeEnvironment DisplayName="Initialize environment" />
+      <mtbag:GitPull DisplayName="Pull sources from Git repo" CleanRepository="[CleanRepository]" Commit="[CheckoutOverride]" />
+      <mtba:AssociateChanges DisplayName="Associate the changesets that occurred since the last good build" UpdateWorkItems="[UpdateAssociatedWorkItems]" />
+      <TryCatch DisplayName="Try" mtbwt:BuildTrackingParticipant.Importance="Low">
+        <TryCatch.Try>
+          <Sequence DisplayName="Compile, Test and Publish">
+            <mtba:RunScript DisplayName="Run optional script before MSBuild" FilePath="[AdvancedBuildSettings.GetValue(Of String)(&quot;PreActionScriptPath&quot;, String.Empty)]" Arguments="[AdvancedBuildSettings.GetValue(Of String)(&quot;PreActionScriptArguments&quot;, String.Empty)]" />
+            <mtba:RunMSBuild DisplayName="Run MSBuild" OutputLocation="[OutputLocation]" CleanBuild="[CleanBuild]" CommandLineArguments="[String.Format(&quot;/p:SkipInvalidConfigurations=true {0}&quot;, AdvancedBuildSettings.GetValue(Of String)(&quot;MSBuildArguments&quot;, String.Empty))]" ConfigurationsToBuild="[ConfigurationsToBuild]" ProjectsToBuild="[ProjectsToBuild]" ToolPlatform="[AdvancedBuildSettings.GetValue(Of String)(&quot;MSBuildPlatform&quot;, &quot;Auto&quot;)]" RunCodeAnalysis="[AdvancedBuildSettings.GetValue(Of String)(&quot;RunCodeAnalysis&quot;, &quot;AsConfigured&quot;)]" />
+            <mtba:RunScript DisplayName="Run optional script after MSBuild" FilePath="[AdvancedBuildSettings.GetValue(Of String)(&quot;PostActionScriptPath&quot;, String.Empty)]" Arguments="[AdvancedBuildSettings.GetValue(Of String)(&quot;PostActionScriptArguments&quot;, String.Empty)]" />
+            <mtba:RunScript DisplayName="Run optional script before Test Runner" FilePath="[AdvancedTestSettings.GetValue(Of String)(&quot;PreActionScriptPath&quot;, String.Empty)]" Arguments="[AdvancedTestSettings.GetValue(Of String)(&quot;PreActionScriptArguments&quot;, String.Empty)]" />
+            <mtba:RunAgileTestRunner DisplayName="Run VS Test Runner" Enabled="[Not AdvancedTestSettings.GetValue(Of Boolean)(&quot;DisableTests&quot;, false)]" TestSpecs="[AutomatedTests]" ConfigurationsToTest="[ConfigurationsToBuild]" />
+            <mtba:RunScript DisplayName="Run optional script after Test Runner" FilePath="[AdvancedTestSettings.GetValue(Of String)(&quot;PostActionScriptPath&quot;, String.Empty)]" Arguments="[AdvancedTestSettings.GetValue(Of String)(&quot;PostActionScriptArguments&quot;, String.Empty)]" />
+            <mtba:RunPublishSymbols DisplayName="Publish Symbols" SymbolStorePath="[SymbolStorePath]" />
+          </Sequence>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception">
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Handle Exception">
+                <mtba:CreateBuildFailureBug DisplayName="Create a bug for the build failure" Enabled="[CreateWorkItem]" />
+                <Rethrow DisplayName="Rethrow the exception so the build will stop" />
+              </Sequence>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+        <TryCatch.Finally>
+          <Sequence DisplayName="Perform Final Actions On Agent">
+            <mtbac:DropBinaries DisplayName="Copy binaries to drop" />
+            <mtbac:ResetEnvironment DisplayName="Reset the Environment" />
+          </Sequence>
+        </TryCatch.Finally>
+      </TryCatch>
+    </mtbwa:AgentScope>
+  </Sequence>
+</Activity>
