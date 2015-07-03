@@ -32,6 +32,7 @@
     </WixVariables>
     <DefineConstants>BUILD=Release</DefineConstants>
     <Cultures>en-US</Cultures>
+    <SuppressValidation>True</SuppressValidation>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
