@@ -210,5 +210,11 @@ namespace TFSAdministrationTool.Tests
     }
 
     #endregion
+
+
+    public void SetSharePointClaimBasedAuthenticationMode(bool p)
+    {
+        throw new NotImplementedException();
+    }
   }
 }

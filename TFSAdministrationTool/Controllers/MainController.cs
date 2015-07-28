@@ -103,7 +103,8 @@ namespace TFSAdministrationTool.Controllers
     {
       Status status = Status.Failed;
       ITeamFoundationServerProxy proxy = ((ITeamFoundationServerProxy) m_ServerStore.TeamProjectCollections[pc.InstanceId]);
-
+      proxy.SetSharePointClaimBasedAuthenticationMode(Settings.Default.UseSharePointClaimBasedAuthentication);
+      
       try
       {
         switch (pc.Tier)
