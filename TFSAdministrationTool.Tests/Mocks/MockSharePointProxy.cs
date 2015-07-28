@@ -83,5 +83,10 @@ namespace TFSAdministrationTool.Tests
     }
 
     #endregion
+
+    public void SetClaimBasedAuthenticationMode(bool param)
+    {
+        throw new NotImplementedException();
+    }
   }
 }
