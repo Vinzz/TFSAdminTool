@@ -16,7 +16,7 @@
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
     <!-- Define the folder that holds the binaries -->
-    <?define RAWFolder=../TFSAdministrationTool/Bin/$(var.Configuration)/?>
+   <?define RAWFolder=../../Binaries/$(var.BUILD)/raw?>
     
     <!-- .NET Framework 4.5 -->
     <PropertyRef Id="NETFRAMEWORK45"/>
