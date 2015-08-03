@@ -82,8 +82,6 @@ namespace TFSAdministrationTool.Proxy
 
         TfsUserCollection UserCollection { get; }
         TfsUserCollection UserCollectionClean { get; }
-
-        void SetSharePointClaimBasedAuthenticationMode(bool p);
     }
     #endregion
 
@@ -168,6 +166,17 @@ namespace TFSAdministrationTool.Proxy
             TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, "UserGroup.Url: " + m_SharePointProxy[SelectedTeamProject].Url);
             TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, "SharePoint site status: " + m_SharePointProxy[m_SelectedTeamProject].SiteStatus.ToString());
             TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, "SharePoint version: " + m_SharePointProxy[m_SelectedTeamProject].WssVersion.ToString());
+
+            // Use claim based authent for SharePoint 2013 and onward
+            if(m_SharePointProxy[m_SelectedTeamProject].WssVersion < WssVersion.WSS5)
+            {
+                ClaimBasedAutenticationMode = false;
+            }
+            else
+            {
+                ClaimBasedAutenticationMode = true;
+            }
+            
             if (ServerVersion == TfsVersion.TfsLegacy)
             {
                 TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, "PortalType: Unknown");
@@ -958,16 +967,5 @@ namespace TFSAdministrationTool.Proxy
             }
         }
         #endregion
-
-
-        /// <summary>
-        /// Sets the share point claim based authentication mode.
-        /// </summary>
-        /// <param name="p">if set to <c>true</c> [p].</param>
-        public void SetSharePointClaimBasedAuthenticationMode(bool p)
-        {
-            ClaimBasedAutenticationMode = p;
-        }
-
     } //End Class
 } //End Namespace
