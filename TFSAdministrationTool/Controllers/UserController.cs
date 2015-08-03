@@ -120,7 +120,7 @@ namespace TFSAdministrationTool.Controllers
       return users;
     }
 
-    public static TfsUserCollection ResolveUsers(string[] users)
+    public static TfsUserCollection ResolveUsers(string[] users, bool showDialog = true)
     {
       /// Keep track of users that we cannot resolve
       List<string> unResolvedUsers = new List<string>();
@@ -149,7 +149,7 @@ namespace TFSAdministrationTool.Controllers
       }
 
       /// Display unresolved users
-      if (unResolvedUsers.Count > 0)
+      if (unResolvedUsers.Count > 0 && showDialog)
       {
         MessageBox.Show(String.Format(Resources.UsersUnresolvedMessage, String.Join(",", unResolvedUsers.ToArray())));
       }
