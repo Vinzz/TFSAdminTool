@@ -228,6 +228,7 @@ namespace TFSAdministrationTool.Tests
     }
 
     [TestMethod()]
+    [TestCategory("NoIC")]
     public void ResolveUsers_NoMatchTest()
     {
       string[] users = { "Jane Doe", "John Doe"};
@@ -238,6 +239,7 @@ namespace TFSAdministrationTool.Tests
     }
 
     [TestMethod()]
+    [TestCategory("NoIC")]
     public void ResolveUsers_PartialMatchTest()
     {
       string[] users = { "Ladislau Szomoru", "Jane Doe" };
@@ -248,6 +250,7 @@ namespace TFSAdministrationTool.Tests
     }
 
     [TestMethod()]
+    [TestCategory("NoIC")]
     public void ResolveUsers_PartialMatchFromExistingUsersTest()
     {
       m_mockTFS.UserCollection.Add(new TfsUser("Brian Harry"));
