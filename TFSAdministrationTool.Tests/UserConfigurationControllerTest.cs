@@ -228,29 +228,26 @@ namespace TFSAdministrationTool.Tests
     }
 
     [TestMethod()]
-    [TestCategory("NoIC")]
     public void ResolveUsers_NoMatchTest()
     {
       string[] users = { "Jane Doe", "John Doe"};
 
-      TfsUserCollection actual = UserController.ResolveUsers(users);
+      TfsUserCollection actual = UserController.ResolveUsers(users, false);
 
       Assert.AreEqual<int>(0, actual.Users.Count);
     }
 
     [TestMethod()]
-    [TestCategory("NoIC")]
     public void ResolveUsers_PartialMatchTest()
     {
       string[] users = { "Ladislau Szomoru", "Jane Doe" };
 
-      TfsUserCollection actual = UserController.ResolveUsers(users);
+      TfsUserCollection actual = UserController.ResolveUsers(users, false);
 
       Assert.AreEqual<int>(1, actual.Users.Count);
     }
 
     [TestMethod()]
-    [TestCategory("NoIC")]
     public void ResolveUsers_PartialMatchFromExistingUsersTest()
     {
       m_mockTFS.UserCollection.Add(new TfsUser("Brian Harry"));
@@ -258,7 +255,7 @@ namespace TFSAdministrationTool.Tests
 
       string[] users = { "Brian Harry", "Jane Doe" };
 
-      TfsUserCollection actual = UserController.ResolveUsers(users);
+      TfsUserCollection actual = UserController.ResolveUsers(users, false);
 
       Assert.AreEqual<int>(1, actual.Users.Count);
     }
