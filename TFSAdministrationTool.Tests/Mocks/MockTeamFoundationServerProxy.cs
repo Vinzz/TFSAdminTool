@@ -50,7 +50,7 @@ namespace TFSAdministrationTool.Tests
       m_ReportServiceProxy = ReportServiceProxyFactory.CreateReportServiceProxy("@http://localhost:80/ReportServer/ReportService2005.asmx", "/", SiteStatus.Available, CredentialCache.DefaultNetworkCredentials);
 
       m_RoleValidator = new RoleValidator(this);
-      //m_RoleValidator.Initialize(SecurityInfoHelper.GetTfsSecurityInfo(), SecurityInfoHelper.GetSpSecurityInfo(), SecurityInfoHelper.GetRsSecurityInfo());
+      m_RoleValidator.Initialize(SecurityInfoHelper.GetTfsSecurityInfo(), SecurityInfoHelper.GetSpSecurityInfo(), SecurityInfoHelper.GetRsSecurityInfo());
     }
 
     #endregion
