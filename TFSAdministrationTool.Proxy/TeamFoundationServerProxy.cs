@@ -82,6 +82,12 @@ namespace TFSAdministrationTool.Proxy
 
         TfsUserCollection UserCollection { get; }
         TfsUserCollection UserCollectionClean { get; }
+
+        // Some encapsulation for unit tests to pass
+        Guid ServerInstanceId { get; }
+
+        // Some encapsulation for unit tests to pass
+        string ServerName { get; }
     }
     #endregion
 
@@ -967,5 +973,20 @@ namespace TFSAdministrationTool.Proxy
             }
         }
         #endregion
+
+
+        public Guid ServerInstanceId
+        {
+            get
+            {
+                return m_TfsServer.InstanceId;
+            }
+        }
+
+
+        public string ServerName
+        {
+            get { return m_TfsServer.Name; }
+        }
     } //End Class
 } //End Namespace

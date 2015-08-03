@@ -36,14 +36,14 @@ namespace TFSAdministrationTool.Tests
       History target = new History();
       List<HistoryItem> actual;
 
-      target.AddHistoryItem("TU", "TestUser", ChangeType.Add, m_mockTFS.Server.Name, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role1", Status.Passed);
-      target.AddHistoryItem("TU", "TestUser", ChangeType.Delete, m_mockTFS.Server.Name, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role1", Status.Passed);
-      target.AddHistoryItem("TU", "TestUser", ChangeType.Add, m_mockTFS.Server.Name, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role2", Status.Passed);
+      target.AddHistoryItem("TU", "TestUser", ChangeType.Add, m_mockTFS.ServerName, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role1", Status.Passed);
+      target.AddHistoryItem("TU", "TestUser", ChangeType.Delete, m_mockTFS.ServerName, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role1", Status.Passed);
+      target.AddHistoryItem("TU", "TestUser", ChangeType.Add, m_mockTFS.ServerName, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role2", Status.Passed);
 
       actual = target.GetNewHistoryItems();
       Assert.AreEqual<int>(3, actual.Count, "Retrieving History using empty index");
 
-      target.AddHistoryItem("TU", "TestUser", ChangeType.Delete, m_mockTFS.Server.Name, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role2", Status.Passed);
+      target.AddHistoryItem("TU", "TestUser", ChangeType.Delete, m_mockTFS.ServerName, m_mockTFS.SelectedTeamProject, SystemTier.TeamFoundation, "Role2", Status.Passed);
 
       actual = target.GetNewHistoryItems();
       Assert.AreEqual<int>(1, actual.Count, "Retrieving History using index");

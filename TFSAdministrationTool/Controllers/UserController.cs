@@ -74,7 +74,7 @@ namespace TFSAdministrationTool.Controllers
 
       // Make sure the user that we are about to add does not have any pending changes
       // Not tool classy as we make a call to the controller of the Main Form but we can change it later
-      if (MainController.PendingChanges.GetPendingChangesForUser(user.UserName, m_TeamFoundationServer.Server.InstanceId, m_TeamFoundationServer.SelectedTeamProject).Count == 0)
+      if (MainController.PendingChanges.GetPendingChangesForUser(user.UserName, m_TeamFoundationServer.ServerInstanceId, m_TeamFoundationServer.SelectedTeamProject).Count == 0)
       {
         if (PerformExistingUserControl)
         {

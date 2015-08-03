@@ -90,7 +90,7 @@ namespace TFSAdministrationTool.Tests
     {
       TfsUser user = new TfsUser("TestUser");
 
-      MainController.PendingChanges.Add(true, true, user.UserName, user.DisplayName, user.Email, ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "TestRole");
+      MainController.PendingChanges.Add(true, true, user.UserName, user.DisplayName, user.Email, ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "TestRole");
       
       UserController.AddUser(user,true);
     }
