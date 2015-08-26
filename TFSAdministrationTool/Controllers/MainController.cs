@@ -233,7 +233,7 @@ namespace TFSAdministrationTool.Controllers
           Dictionary<string, ChangeType> spChanges = TfsUser.GetRoleChanges(sourceUser, targetUser, SystemTier.SharePoint);
           foreach (KeyValuePair<string, ChangeType> change in spChanges)
           {
-              m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.SharePoint, change.Key);
+              m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Uri.ToString(), CurrentServer.Server.InstanceId, SystemTier.SharePoint, change.Key);
           }
         }
 
