@@ -220,7 +220,7 @@ namespace TFSAdministrationTool.Controllers
         Dictionary<string, ChangeType> tfsChanges = TfsUser.GetRoleChanges(sourceUser, targetUser, SystemTier.TeamFoundation);
         foreach (KeyValuePair<string, ChangeType> change in tfsChanges)
         {
-            m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.TeamFoundation, change.Key);
+            m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Uri.ToString(), CurrentServer.Server.InstanceId, SystemTier.TeamFoundation, change.Key);
         }
         
         /// This code is used by Import User feature as well and we need to make
@@ -244,7 +244,7 @@ namespace TFSAdministrationTool.Controllers
           Dictionary<string, ChangeType> rsChanges = TfsUser.GetRoleChanges(sourceUser, targetUser, SystemTier.ReportingServices);
           foreach (KeyValuePair<string, ChangeType> change in rsChanges)
           {
-              m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Name, CurrentServer.Server.InstanceId, SystemTier.ReportingServices, change.Key);
+              m_PendingChanges.Add(true, false, targetUser.UserName, targetUser.DisplayName, targetUser.Email, change.Value, CurrentServer.SelectedTeamProject, CurrentServer.Server.Uri.ToString(), CurrentServer.Server.InstanceId, SystemTier.ReportingServices, change.Key);
           }
         }
       }
