@@ -50,7 +50,7 @@ namespace TFSAdministrationTool.Tests
       m_ReportServiceProxy = ReportServiceProxyFactory.CreateReportServiceProxy("@http://localhost:80/ReportServer/ReportService2005.asmx", "/", SiteStatus.Available, CredentialCache.DefaultNetworkCredentials);
 
       m_RoleValidator = new RoleValidator(this);
-      //m_RoleValidator.Initialize(SecurityInfoHelper.GetTfsSecurityInfo(), SecurityInfoHelper.GetSpSecurityInfo(), SecurityInfoHelper.GetRsSecurityInfo());
+      m_RoleValidator.Initialize(SecurityInfoHelper.GetTfsSecurityInfo(), SecurityInfoHelper.GetSpSecurityInfo(), SecurityInfoHelper.GetRsSecurityInfo());
     }
 
     #endregion
@@ -159,7 +159,7 @@ namespace TFSAdministrationTool.Tests
 
     TfsTeamProjectCollection ITeamFoundationServerProxy.Server
     {
-      get { throw new NotImplementedException(); }
+        get { throw new NotImplementedException(); }
     }
     
     ProjectInfo[] ITeamFoundationServerProxy.TeamProjects
@@ -215,6 +215,18 @@ namespace TFSAdministrationTool.Tests
     public void SetSharePointClaimBasedAuthenticationMode(bool p)
     {
         throw new NotImplementedException();
+    }
+
+
+    public Guid ServerInstanceId
+    {
+        get { return new Guid(); }
+    }
+
+
+    public string ServerName
+    {
+        get { return "TestServer"; }
     }
   }
 }

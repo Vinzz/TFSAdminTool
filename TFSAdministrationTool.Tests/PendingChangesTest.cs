@@ -35,14 +35,14 @@ namespace TFSAdministrationTool.Tests
     {
       PendingChanges target = new PendingChanges();
 
-      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Role1");
+      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Role1");
       Assert.AreEqual<int>(1, target.All.Count, "Not Checked, Not Selected");
 
-      target.Add(true, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Role1");
+      target.Add(true, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Role1");
       Assert.AreEqual<int>(2, target.All.Count, "Checked, Not Selected");
       Assert.AreEqual<int>(1, target.Checked.Count, "Checked, Not Selected");
 
-      target.Add(false, true, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Role1");
+      target.Add(false, true, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Role1");
       Assert.AreEqual<int>(3, target.All.Count, "Not Checked, Selected");
       Assert.AreEqual<int>(1, target.Checked.Count, "Not Checked, Selected");
     }
@@ -52,14 +52,14 @@ namespace TFSAdministrationTool.Tests
     {
       PendingChanges target = new PendingChanges();
 
-      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Role1");
+      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Role1");
       Assert.AreEqual<int>(1, target.All.Count, "Change Type Add");
-      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Role1");
+      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Role1");
       Assert.AreEqual<int>(0, target.All.Count, "Change Type Delete removes Add");
 
-      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Role1");
+      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Role1");
       Assert.AreEqual<int>(1, target.All.Count, "Change Type Delete");
-      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Role1");
+      target.Add(false, false, "TU", "TestUser", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Role1");
       Assert.AreEqual<int>(0, target.All.Count, "Change Type Add removes Delete");
     }
   }

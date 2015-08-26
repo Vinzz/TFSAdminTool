@@ -74,7 +74,7 @@ namespace TFSAdministrationTool.Controllers
 
       // Make sure the user that we are about to add does not have any pending changes
       // Not tool classy as we make a call to the controller of the Main Form but we can change it later
-      if (MainController.PendingChanges.GetPendingChangesForUser(user.UserName, m_TeamFoundationServer.Server.InstanceId, m_TeamFoundationServer.SelectedTeamProject).Count == 0)
+      if (MainController.PendingChanges.GetPendingChangesForUser(user.UserName, m_TeamFoundationServer.ServerInstanceId, m_TeamFoundationServer.SelectedTeamProject).Count == 0)
       {
         if (PerformExistingUserControl)
         {
@@ -120,7 +120,7 @@ namespace TFSAdministrationTool.Controllers
       return users;
     }
 
-    public static TfsUserCollection ResolveUsers(string[] users)
+    public static TfsUserCollection ResolveUsers(string[] users, bool showDialog = true)
     {
       /// Keep track of users that we cannot resolve
       List<string> unResolvedUsers = new List<string>();
@@ -149,7 +149,7 @@ namespace TFSAdministrationTool.Controllers
       }
 
       /// Display unresolved users
-      if (unResolvedUsers.Count > 0)
+      if (unResolvedUsers.Count > 0 && showDialog)
       {
         MessageBox.Show(String.Format(Resources.UsersUnresolvedMessage, String.Join(",", unResolvedUsers.ToArray())));
       }
