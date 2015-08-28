@@ -149,3 +149,4 @@ UpgradeLog*.htm
 *.bim_*.settings
 # Microsoft Fakes
 FakesAssemblies/
+*VersionAssemblyInfo.cs
