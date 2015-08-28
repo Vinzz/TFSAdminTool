@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" 
      xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <Product Id="*" 
+
+ <?define VERSION=!(bind.FileVersion.TFSAdministrationTool.exe)?>   	 
+
+ <Product Id="*" 
            Name="TFS Administration Tool" 
            Language="1033" 
-           Version="2.3.2" 
+           Version="$(var.VERSION)" 
            Manufacturer="www.codeplex.com/tfsadmin" 
            UpgradeCode="5053215D-63C6-4B01-AA83-E492343B69DB">
     
