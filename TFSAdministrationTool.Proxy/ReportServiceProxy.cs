@@ -244,7 +244,7 @@ namespace TFSAdministrationTool.Proxy
         foreach (Role r in p.Roles)
         {
           SecurityGroup sGroup = rsSecurityInfo.GetGroupByName(r.Name);
-          sGroup.AddUser(String.Empty, p.GroupUserName, p.GroupUserName);
+          sGroup.AddUser(String.Empty, p.GroupUserName, p.GroupUserName, String.Empty);
         }
       }
 

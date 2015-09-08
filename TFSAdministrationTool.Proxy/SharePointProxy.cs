@@ -49,6 +49,7 @@ namespace TFSAdministrationTool.Proxy
         SecurityInfo GetSecuritySettings();
 
         string Url { get; }
+        string ClaimBasedAuthentPrefix { get; }
         SiteStatus SiteStatus { get; }
         WssVersion WssVersion { get; }
     }
@@ -87,7 +88,7 @@ namespace TFSAdministrationTool.Proxy
         /// ite
         public void AddUserToRole(string userName, string role, string displayName, string email, string description)
         {
-            string userNameParam = userName + claimBasedAuthentPrefix;
+            string userNameParam = claimBasedAuthentPrefix + userName;
 
             m_UserGroup.AddUserToRole(role, displayName, userNameParam, email, description);
         }
@@ -103,7 +104,7 @@ namespace TFSAdministrationTool.Proxy
         /// ite
         public void AddUserToGroup(string userName, string group, string displayName, string email, string description)
         {
-            string userNameParam = userName + claimBasedAuthentPrefix;
+            string userNameParam = claimBasedAuthentPrefix + userName;
 
             m_UserGroup.AddUserToGroup(group, displayName, userNameParam, email, description);
         }
@@ -220,7 +221,7 @@ namespace TFSAdministrationTool.Proxy
 
                         foreach (XmlNode userNode in usersNode.FirstChild.ChildNodes)
                         {
-                            sGroup.AddUser(userNode.Attributes["Sid"].Value, userNode.Attributes["Name"].Value, userNode.Attributes["Name"].Value);
+                            sGroup.AddUser(userNode.Attributes["Sid"].Value, userNode.Attributes["Name"].Value, userNode.Attributes["Name"].Value, userNode.Attributes["LoginName"].Value);
                         }
                         spSecurityInfo.AddGroup(sGroup);
                     }
@@ -229,6 +230,7 @@ namespace TFSAdministrationTool.Proxy
                 try
                 {
                     // Wrap group retrieval in a nested try catch, so that failure to handle SP Groups will result in gracefully falling back to default functionality
+                    var spy = GetGroupCollectionFromSite();
                     foreach (XmlNode groupNode in GetGroupCollectionFromSite().ChildNodes[0].ChildNodes)
                     {
                         if (groupNode.Attributes["Hidden"] == null ||
@@ -239,7 +241,7 @@ namespace TFSAdministrationTool.Proxy
 
                             foreach (XmlNode userNode in usersNode.FirstChild.ChildNodes)
                             {
-                                sGroup.AddUser(userNode.Attributes["Sid"].Value, userNode.Attributes["Name"].Value, userNode.Attributes["Name"].Value);
+                                sGroup.AddUser(userNode.Attributes["Sid"].Value, userNode.Attributes["Name"].Value, userNode.Attributes["Name"].Value, userNode.Attributes["LoginName"].Value);
                             }
                             spSecurityInfo.AddGroup(sGroup);
                         }
@@ -291,7 +293,7 @@ namespace TFSAdministrationTool.Proxy
 
         public void RemoveUser(string userName)
         {
-            string userNameParam = userName + claimBasedAuthentPrefix;
+            string userNameParam = claimBasedAuthentPrefix + userName;
 
             List<string> assignedRoles = GetRoleCollectionFromUser(userNameParam);
 
@@ -316,7 +318,7 @@ namespace TFSAdministrationTool.Proxy
         /// <param name="role">Role Name</param>
         public void RemoveUserFromRole(string userName, string role)
         {
-            string userNameParam = userName + claimBasedAuthentPrefix;
+            string userNameParam = claimBasedAuthentPrefix + userName;
             m_UserGroup.RemoveUserFromRole(role, userNameParam);
         }
 
@@ -328,7 +330,7 @@ namespace TFSAdministrationTool.Proxy
         /// <param name="group">Group Name</param>
         public void RemoveUserFromGroup(string userName, string group)
         {
-            string userNameParam = userName + claimBasedAuthentPrefix;
+            string userNameParam = claimBasedAuthentPrefix + userName;
             m_UserGroup.RemoveUserFromGroup(group, userNameParam);
         }
 
@@ -400,6 +402,14 @@ namespace TFSAdministrationTool.Proxy
             get
             {
                 return m_UserGroup.Url;
+            }
+        }
+
+        public string ClaimBasedAuthentPrefix
+        {
+            get
+            {
+                return claimBasedAuthentPrefix;
             }
         }
 

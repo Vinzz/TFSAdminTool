@@ -72,6 +72,11 @@ namespace TFSAdministrationTool.Tests
       get { throw new NotImplementedException(); }
     }
 
+    string ISharePointProxy.ClaimBasedAuthentPrefix
+        {
+        get { throw new NotImplementedException(); }
+    }
+
     SiteStatus ISharePointProxy.SiteStatus
     {
       get { return SiteStatus.Available; }
