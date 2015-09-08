@@ -80,6 +80,11 @@ namespace TFSAdministrationTool
                     {
                         MessageBox.Show(string.Format("{0}\nCheck the config file",smtpEx.Message), "Bad smtp configuration", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    checkNotify.Checked = true;
+                }
+                else
+                {
+                    checkNotify.Checked = false;
                 }
 
             }
@@ -112,7 +117,7 @@ namespace TFSAdministrationTool
 
                     ServerInfo si = MainController.OnServerConnect();
 
-                    if (si != null)
+                    if (si !=  null)
                     {
                         // Remove Pending changes based on ServerInfo
                         MainController.PendingChanges.RemoveByServerInfo(si);
@@ -123,7 +128,7 @@ namespace TFSAdministrationTool
                         // Update the Server Explorer
                         TreeViewAddServer(si);
 
-                        if (MainController.CurrentServer.SelectedTeamProject == String.Empty)
+                        if (MainController.CurrentServer.SelectedTeamProject == string.Empty)
                         {
                             // Disable DataGrid
                             DataGridViewEnabled(false);
@@ -1062,5 +1067,11 @@ namespace TFSAdministrationTool
             Application.DoEvents();
         }
         #endregion
+
+        private void checkNotify_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.NotifyUsersByEmail = (sender as CheckBox).Checked;
+        }
+
     } //End Class
 } //End Namespace
