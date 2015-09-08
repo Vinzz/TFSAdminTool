@@ -21,6 +21,7 @@ namespace TFSAdministrationTool.Proxy.Common
     WSS2,     /// Windows SharePoint Services 2.0
     WSS3,     /// Windows SharePoint Services 3.0 or MOSS 2007
     WSS4,     /// SharePoint Foundation 2010 or SharePoint Server 2010
+    WSS5,     /// SharePoint Foundation 2013 or SharePoint Server 2013
     Unknown   /// Error while determining the version of SharePoint
   }
   

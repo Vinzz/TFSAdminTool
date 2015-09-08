@@ -363,6 +363,8 @@ namespace TFSAdministrationTool.Proxy
                         return WssVersion.WSS3;
                     case "14":
                         return WssVersion.WSS4;
+                    case "15":
+                        return WssVersion.WSS5;
                     default:
                         return WssVersion.Unknown;
                 }

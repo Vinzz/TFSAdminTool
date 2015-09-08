@@ -271,9 +271,9 @@ namespace TFSAdministrationTool.Tests
       
       // Initialize the pending changes for adding a new user
       Dictionary<Guid, PendingChange> pendingChanges = new Dictionary<Guid, PendingChange>();
-      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "Project Administrators"));
-      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.SharePoint, "Full Control"));
-      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.ReportingServices, "Content Manager"));
+      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "Project Administrators"));
+      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.SharePoint, "Full Control"));
+      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.ReportingServices, "Content Manager"));
 
       // Apply the pending changes
       sourceUsers.ApplyPendingChanges(pendingChanges);
@@ -292,7 +292,7 @@ namespace TFSAdministrationTool.Tests
 
       // Initialize the pending changes for deleting a role
       pendingChanges.Clear();
-      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.ReportingServices, "Content Manager"));
+      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.ReportingServices, "Content Manager"));
 
       sourceUsers.ApplyPendingChanges(pendingChanges);
 
@@ -303,7 +303,7 @@ namespace TFSAdministrationTool.Tests
 
       // Initialize the pending changes for deleting the user
       pendingChanges.Clear();
-      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.TeamFoundation, "All"));
+      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.TeamFoundation, "All"));
 
       sourceUsers.ApplyPendingChanges(pendingChanges);
     
@@ -320,7 +320,7 @@ namespace TFSAdministrationTool.Tests
 
       // Initialize the pending changes for adding a role
       Dictionary<Guid, PendingChange> pendingChanges = new Dictionary<Guid, PendingChange>();
-      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.SharePoint, "Read"));
+      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Add, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.SharePoint, "Read"));
 
       // Apply the pending changes
       sourceUsers.ApplyPendingChanges(pendingChanges);
@@ -334,7 +334,7 @@ namespace TFSAdministrationTool.Tests
 
       // Initialize the pending changes for deleting a role
       pendingChanges.Clear();
-      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.Server.Name, m_mockTFS.Server.InstanceId, SystemTier.ReportingServices, "Content Manager"));
+      pendingChanges.Add(Guid.NewGuid(), new PendingChange(true, false, @"domain\username", "UserName", "foo@bar.baz", ChangeType.Delete, m_mockTFS.SelectedTeamProject, m_mockTFS.ServerName, m_mockTFS.ServerInstanceId, SystemTier.ReportingServices, "Content Manager"));
 
       sourceUsers.ApplyPendingChanges(pendingChanges);
 
