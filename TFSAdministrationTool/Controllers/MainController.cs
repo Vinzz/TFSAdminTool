@@ -90,7 +90,7 @@ namespace TFSAdministrationTool.Controllers
     public static TfsUserCollection OnTeamProjectSelected(Uri serverUri, Guid collectionId, string projectName)
     {
       m_ServerStore.SelectServerAndCollection(serverUri, collectionId);
-      
+
       CurrentServer.SelectTeamProject(projectName);      
       CurrentServer.InitializeServerAndTeamProjectUsers();
 
