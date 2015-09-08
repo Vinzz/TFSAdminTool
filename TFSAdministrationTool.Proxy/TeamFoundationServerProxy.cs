@@ -58,6 +58,7 @@ namespace TFSAdministrationTool.Proxy
         void ReportingServiceRemoveUser(string teamProject, string userName);
 
         void SelectTeamProject(string name);
+
         void UpdateTeamProjects(ProjectInfo[] projects);
 
         string GetTeamProjectUri(string name);
@@ -96,8 +97,6 @@ namespace TFSAdministrationTool.Proxy
         #region Fields
         // We store a SharePoint proxy object for each team project
         private Dictionary<string, ISharePointProxy> m_SharePointProxy;
-
-        public bool ClaimBasedAutenticationMode { get; set; }
 
         // All team projects are sharing the same SSRS proxy
         private IReportServiceProxy m_ReportServiceProxy;
@@ -173,16 +172,6 @@ namespace TFSAdministrationTool.Proxy
             TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, "SharePoint site status: " + m_SharePointProxy[m_SelectedTeamProject].SiteStatus.ToString());
             TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, "SharePoint version: " + m_SharePointProxy[m_SelectedTeamProject].WssVersion.ToString());
 
-            // Use claim based authent for SharePoint 2013 and onward
-            if(m_SharePointProxy[m_SelectedTeamProject].WssVersion < WssVersion.WSS5)
-            {
-                ClaimBasedAutenticationMode = false;
-            }
-            else
-            {
-                ClaimBasedAutenticationMode = true;
-            }
-            
             if (ServerVersion == TfsVersion.TfsLegacy)
             {
                 TfsAdminToolTracer.TraceMessage(TfsAdminToolTracer.TraceSwitch.TraceInfo, "PortalType: Unknown");
@@ -226,7 +215,9 @@ namespace TFSAdministrationTool.Proxy
             if (!m_SharePointProxy.ContainsKey(teamProject))
             {
                 ISharePointProxy spProxy = SharePointProxyFactory.CreateProxy(GetSharePointUrl(teamProject), GetSharePointSiteStatus(teamProject), m_TfsServer.Credentials);
-                spProxy.SetClaimBasedAuthenticationMode(this.ClaimBasedAutenticationMode);
+                
+                // Use claim based authent for SharePoint 2013 and onward
+                spProxy.SetClaimBasedAuthenticationMode(spProxy.WssVersion >= WssVersion.WSS5);
                 m_SharePointProxy[teamProject] = spProxy;
             }
         }
@@ -263,7 +254,7 @@ namespace TFSAdministrationTool.Proxy
                     // We add only Windows users and groups
                     if (userIdentity.Type == IdentityType.WindowsUser || userIdentity.Type == IdentityType.WindowsGroup)
                     {
-                        sGroup.AddUser(userIdentity.Sid, userIdentity.Domain + "\\" + userIdentity.AccountName, userIdentity.DisplayName, userIdentity.MailAddress, userIdentity.Type);
+                        sGroup.AddUser(userIdentity.Sid, userIdentity.Domain + "\\" + userIdentity.AccountName, userIdentity.DisplayName, userIdentity.MailAddress, userIdentity.Type, m_SharePointProxy[teamProject].ClaimBasedAuthentPrefix + userIdentity.Domain + "\\" + userIdentity.AccountName);
                     }
                 }
 
@@ -295,7 +286,7 @@ namespace TFSAdministrationTool.Proxy
                         if (m_SharePointProxy[teamProject].SiteStatus == SiteStatus.Available)
                         {
                             // If the site exists get the SharePoint roles 
-                            foreach (SecurityGroup spGroup in spSecurityInfo.GetGroupBySid(member.Sid))
+                            foreach (SecurityGroup spGroup in spSecurityInfo.GetGroupBySidOrLoginName(member.Sid, member.LoginName))
                             {
                                 user.AddRole(spGroup.DisplayName, SystemTier.SharePoint);
                             }

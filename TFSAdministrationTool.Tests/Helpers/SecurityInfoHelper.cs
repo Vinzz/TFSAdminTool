@@ -17,13 +17,13 @@ namespace TFSAdministrationTool.Tests.Helpers
       SecurityInfo tfsSecurityInfo = new SecurityInfo();
 
       SecurityGroup gReaders = new SecurityGroup() { DisplayName = "Readers" };
-      gReaders.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742344", @"domain\ReaderUser", "ReaderUser");
+      gReaders.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742344", @"domain\ReaderUser", "ReaderUser", string.Empty);
       
       SecurityGroup gContributors = new SecurityGroup() { DisplayName = "Contributors" };
-      gContributors.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742355", @"domain\ContributorUser", "ContributorUser");
+      gContributors.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742355", @"domain\ContributorUser", "ContributorUser", string.Empty);
 
       SecurityGroup gProjectAdministrators = new SecurityGroup() { DisplayName = "Project Administrators" };
-      gProjectAdministrators.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742366", @"domain\AdministratorUser", "AdministratorUser");
+      gProjectAdministrators.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742366", @"domain\AdministratorUser", "AdministratorUser", string.Empty);
 
       SecurityGroup gBuildServices = new SecurityGroup() { DisplayName = "Build Services" };
       
@@ -40,15 +40,15 @@ namespace TFSAdministrationTool.Tests.Helpers
       SecurityInfo spSecurityInfo = new SecurityInfo();
 
       SecurityGroup gFullControl = new SecurityGroup() { DisplayName= "Full Control" };
-      gFullControl.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742366", String.Empty, "AdministratorUser");
+      gFullControl.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742366", String.Empty, "AdministratorUser", string.Empty);
       
       SecurityGroup gDesign = new SecurityGroup() { DisplayName = "Design" };
       
       SecurityGroup gContribute = new SecurityGroup() { DisplayName = "Contribute" };
-      gContribute.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742355", String.Empty, "ContributorUser");
+      gContribute.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742355", String.Empty, "ContributorUser", string.Empty);
       
       SecurityGroup gRead = new SecurityGroup() { DisplayName = "Read" };
-      gRead.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742344", String.Empty, "ReaderUser");
+      gRead.AddUser("S-1-5-21-1721254763-462695806-1538882281-2742344", String.Empty, "ReaderUser", string.Empty);
 
       spSecurityInfo.AddGroup(gFullControl);
       spSecurityInfo.AddGroup(gDesign);
@@ -63,11 +63,11 @@ namespace TFSAdministrationTool.Tests.Helpers
       SecurityInfo rsSecurityInfo = new SecurityInfo();
 
       SecurityGroup gBrowser = new SecurityGroup() { DisplayName = "Browser" };
-      gBrowser.AddUser(String.Empty, @"domain\ReaderUser", string.Empty);
+      gBrowser.AddUser(String.Empty, @"domain\ReaderUser", string.Empty, string.Empty);
 
       SecurityGroup gContentManager = new SecurityGroup() { DisplayName = "Content Manager" };
-      gContentManager.AddUser(String.Empty, @"domain\ContributorUser", String.Empty);
-      gContentManager.AddUser(String.Empty, @"domain\AdministratorUser", String.Empty);
+      gContentManager.AddUser(String.Empty, @"domain\ContributorUser", String.Empty, string.Empty);
+      gContentManager.AddUser(String.Empty, @"domain\AdministratorUser", String.Empty, string.Empty);
             
       SecurityGroup gMyReports = new SecurityGroup() { DisplayName = "My Reports" };
       SecurityGroup gPublisher = new SecurityGroup() { DisplayName = "Publisher" };
