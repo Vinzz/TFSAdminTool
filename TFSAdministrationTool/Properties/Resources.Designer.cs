@@ -101,6 +101,24 @@ namespace TFSAdministrationTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bad smtp configuration.
+        /// </summary>
+        internal static string BadSMTPCaption {
+            get {
+                return ResourceManager.GetString("BadSMTPCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}\nCheck the config file.
+        /// </summary>
+        internal static string BadSMTPPrompt {
+            get {
+                return ResourceManager.GetString("BadSMTPPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team project(s) {0} has/have uncommited changes. If you unselect any of these team project(s), the uncommited changes will be lost. Would you like to continue?.
         /// </summary>
         internal static string ConnectPendingChangesExistsPrompt {
@@ -191,6 +209,15 @@ namespace TFSAdministrationTool.Properties {
         internal static string LoadingUserInfoStatusPrompt {
             get {
                 return ResourceManager.GetString("LoadingUserInfoStatusPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not send mail to {0}\n{1}.
+        /// </summary>
+        internal static string MailCouldNotBeSentError {
+            get {
+                return ResourceManager.GetString("MailCouldNotBeSentError", resourceCulture);
             }
         }
         
