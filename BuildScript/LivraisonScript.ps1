@@ -1,13 +1,18 @@
-﻿
+﻿write-host 'Begin post build script'
+
+write-host ('env var: ' + $env:TF_BUILD_BINARIESDIRECTORY)
+
 # Extract current version
-$version = (Get-Item "TFSAdministrationTool.exe").VersionInfo.FileVersion
+$version = (Get-Item ($env:TF_BUILD_BINARIESDIRECTORY + "\TFSAdministrationTool.exe")).VersionInfo.FileVersion
 
 # Get installer Name
-$Name = (Get-Item "TFSAdministrationTool.msi").Name
+$Name = (Get-Item ($env:TF_BUILD_BINARIESDIRECTORY + "\TFSAdministrationTool.msi")).FullName
 
 
 # Compute new name
-$Name = $Name.Replace('msi', $version + '.msi')
+$NewName = $Name.Replace('msi', ($version + '.msi'))
 
 # Rename
-Rename-Item -NewName $Name -Path "C:\Users\Vinzz\AppData\Local\Temp\TFSAdministrationTool.msi"
+Rename-Item -NewName $NewName -Path $Name
+
+write-host 'End post build script'
