@@ -1,6 +1,6 @@
-﻿'Begin post build script'
+﻿write-host 'Begin post build script'
 
-'env var: ' + $Env:TF_BUILD_BINARIESDIRECTORY
+write-host 'env var: ' + $Env:TF_BUILD_BINARIESDIRECTORY
 
 # Extract current version
 #$version = (Get-Item $Env:TF_BUILD_BINARIESDIRECTORY + "TFSAdministrationTool.exe").VersionInfo.FileVersion
@@ -15,4 +15,4 @@
 # Rename
 #Rename-Item -NewName $NewName -Path $Name
 
-'End post build script'
+write-host 'End post build script'
