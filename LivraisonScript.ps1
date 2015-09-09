@@ -1,9 +1,9 @@
 ﻿
 # Extract current version
-$version = (Get-Item $Env: TF_BUILD_BINARIESDIRECTORY + "TFSAdministrationTool.exe").VersionInfo.FileVersion
+$version = (Get-Item $Env:TF_BUILD_BINARIESDIRECTORY + "TFSAdministrationTool.exe").VersionInfo.FileVersion
 
 # Get installer Name
-$Name = (Get-Item $Env: TF_BUILD_BINARIESDIRECTORY + "TFSAdministrationTool.msi").Name
+$Name = (Get-Item $Env:TF_BUILD_BINARIESDIRECTORY + "TFSAdministrationTool.msi").Name
 
 
 # Compute new name
