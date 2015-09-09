@@ -76,9 +76,9 @@ namespace TFSAdministrationTool
                     {
                         MailMessage m = new MailMessage();
                     }
-                    catch(Exception smtpEx)
+                    catch (Exception smtpEx)
                     {
-                        MessageBox.Show(string.Format("{0}\nCheck the config file",smtpEx.Message), "Bad smtp configuration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(string.Format(Resources.BadSMTPPrompt, smtpEx.Message), Resources.BadSMTPCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     checkNotify.Checked = true;
                 }
@@ -117,7 +117,7 @@ namespace TFSAdministrationTool
 
                     ServerInfo si = MainController.OnServerConnect();
 
-                    if (si !=  null)
+                    if (si != null)
                     {
                         // Remove Pending changes based on ServerInfo
                         MainController.PendingChanges.RemoveByServerInfo(si);
@@ -802,14 +802,25 @@ namespace TFSAdministrationTool
                         /// Send notifications, if available
                         if (Properties.Settings.Default.NotifyUsersByEmail)
                         {
+                            string currMail = string.Empty;
+
                             using (SmtpClient client = new SmtpClient())
                             {
                                 /// sort the notifications by email, and send an aggregated note
                                 foreach (MailMessage mail in notifier.PrepareNotifications())
                                 {
-                                    client.Send(mail);
+                                    currMail = mail.To[0].ToString();
+                                    try
+                                    {
+                                        client.Send(mail);
+                                    }
+                                    catch (Exception sendEx)
+                                    {
+                                        MessageBox.Show(string.Format(Resources.MailCouldNotBeSentError, currMail, sendEx.Message), Resources.UnexpectedExceptionCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
+
                         }
 
                         /// Refresh the Grid if any changes were successfully commited

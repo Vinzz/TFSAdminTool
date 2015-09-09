@@ -822,7 +822,7 @@
   <data name="usersDeleteToolStripButton" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAC4lJREFUaEPtmQlUk1cWx1OQNayBLCSsCQn7jqyCiCJoFaiiIrKJiKLWKm51ReuC
+        vgAADr4B6kKxwAAAC4lJREFUaEPtmQlUk1cWx1OQNayBLCSsCQn7jqyCiCJoFaiiIrKJiKLWKm51ReuC
         2FqtS2ttO53TnulYu4xanRnntHVHhIadghJIWcIWAqKox2mn/7mBrzOd9vSgDFR7Tn/nvBPyff/3ct97
         9953vw/W7zxtDJQWP3tfXvzWnTOfvH/n3Kn3+k5/skN98mQAc/uJ0JSV5dKWm7O0ed5z76tz0i+XRoZd
         vBIetJG5PcT3ZWXcB/KSv/R/+id07VqL9k256N65Br2HC3Dnj2+g7sDL5wIdHV0Y+ZhTM2eOSfPy3BzV
@@ -2679,5 +2679,14 @@ TFS Administration Tool is a joint Microsoft and community effort to bring you a
   </data>
   <data name="NotificationSubject" xml:space="preserve">
     <value>Changes in your TFS subscription</value>
+  </data>
+  <data name="BadSMTPCaption" xml:space="preserve">
+    <value>Bad smtp configuration</value>
+  </data>
+  <data name="BadSMTPPrompt" xml:space="preserve">
+    <value>{0}\nCheck the config file</value>
+  </data>
+  <data name="MailCouldNotBeSentError" xml:space="preserve">
+    <value>Could not send mail to {0}\n{1}</value>
   </data>
 </root>
