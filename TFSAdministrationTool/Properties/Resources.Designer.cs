@@ -110,7 +110,8 @@ namespace TFSAdministrationTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}\nCheck the config file.
+        ///   Looks up a localized string similar to {0}
+        ///Check the config file, emails won&apos;t be sent.
         /// </summary>
         internal static string BadSMTPPrompt {
             get {
