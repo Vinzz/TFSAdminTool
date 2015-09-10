@@ -75,12 +75,13 @@ namespace TFSAdministrationTool
                     try
                     {
                         MailMessage m = new MailMessage();
+                        checkNotify.Checked = true;
                     }
                     catch (Exception smtpEx)
                     {
                         MessageBox.Show(string.Format(Resources.BadSMTPPrompt, smtpEx.Message), Resources.BadSMTPCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    checkNotify.Checked = true;
+                        checkNotify.Checked = false;
+                    }   
                 }
                 else
                 {
