@@ -15,7 +15,7 @@ $NewName = $Name.Replace('msi', ($version + '.msi'))
 # Rename
 Rename-Item -NewName $NewName -Path $Name
 
-$InstallFolder = "\\vtfs-drop01.ad-build.local\Install\TFS Administration Tool OAB\"
+write-host 'End post build script'
 
 #remove old version, if any
 GET-CHILDITEM $InstallFolder –recurse –include *.msi | REMOVE-ITEM

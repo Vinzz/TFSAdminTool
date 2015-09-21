@@ -122,9 +122,6 @@ namespace TFSAdministrationTool.Proxy
             List<string> spRoles = new List<string>(); ;
             XmlNode result;
 
-            //if (userName == null)
-            //throw new InvalidSPUserException(userName, siteName);
-
             /// Actual call to the SharePoint Web Service to get a list of roles the user belongs to. Its returned
             /// as XML data. 
             try
