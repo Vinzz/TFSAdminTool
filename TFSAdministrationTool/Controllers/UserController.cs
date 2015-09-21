@@ -28,6 +28,7 @@ namespace TFSAdministrationTool.Controllers
 
         private static string m_TeamProject;
         private static TfsUserCollection m_Users = new TfsUserCollection();
+        private static bool m_tryDomainResolution = false;
 
         public static string TeamProject
         {
@@ -49,9 +50,11 @@ namespace TFSAdministrationTool.Controllers
             }
         }
 
-        public static void Initialize(ITeamFoundationServerProxy tfs, TfsUserCollection users)
+        public static void Initialize(ITeamFoundationServerProxy tfs, TfsUserCollection users, bool tryDomainResolution = false)
         {
             m_TeamFoundationServer = tfs;
+
+            m_tryDomainResolution = tryDomainResolution;
 
             if (users != null)
                 m_Users = users;
@@ -145,7 +148,7 @@ namespace TFSAdministrationTool.Controllers
                 }
             }
 
-            if(Settings.Default.TryDomainResolution)
+            if(m_tryDomainResolution)
             {
                 List<string> resolvedByAD = new List<string>();
 
