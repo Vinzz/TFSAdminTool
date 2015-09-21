@@ -65,7 +65,10 @@
             
             <File Id ="TFSAdministrationTool.Proxy.dll" Source ="$(var.RAWFolder)/TFSAdministrationTool.Proxy.dll" />
             <File Id ="TFSAdministrationTool.Proxy.pdb" Source ="$(var.RAWFolder)/TFSAdministrationTool.Proxy.pdb" />
-            
+
+            <File Id ="ADInfosService.dll" Source ="$(var.RAWFolder)/ADInfosService.dll" />
+            <File Id ="ADInfosService.pdb" Source ="$(var.RAWFolder)/ADInfosService.pdb" />
+
             <File Id ="RoleConfig.xml" Source ="$(var.RAWFolder)/RoleConfig.xml" />
 
             <Shortcut Id="TfsAdminShortcut"
