@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21126.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{818C252D-9D30-464F-9440-A347F2AB8463}"
 	ProjectSection(SolutionItems) = preProject
@@ -22,25 +22,9 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "TSFAdministrationTool.Setup
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSAdministrationTool.Tests", "TFSAdministrationTool.Tests\TFSAdministrationTool.Tests.csproj", "{79048740-D07E-4D7E-B4E5-607868D8EAAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADInfosService", "ADInfoService\ADInfosService.csproj", "{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = TFSAdministrationTool\\TFSAdministrationTool.csproj
-		SccProjectName1 = TFSAdministrationTool
-		SccLocalPath1 = TFSAdministrationTool
-		SccProjectUniqueName2 = TFSAdministrationTool.Proxy\\TFSAdministrationTool.Proxy.csproj
-		SccProjectName2 = TFSAdministrationTool.Proxy
-		SccLocalPath2 = TFSAdministrationTool.Proxy
-		SccProjectUniqueName3 = TFSAdministrationTool.Setup\\TSFAdministrationTool.Setup.wixproj
-		SccProjectName3 = TFSAdministrationTool.Setup
-		SccLocalPath3 = TFSAdministrationTool.Setup
-		SccProjectUniqueName4 = TFSAdministrationTool.Tests\\TFSAdministrationTool.Tests.csproj
-		SccProjectName4 = TFSAdministrationTool.Tests
-		SccLocalPath4 = TFSAdministrationTool.Tests
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
@@ -79,6 +63,14 @@ Global
 		{79048740-D07E-4D7E-B4E5-607868D8EAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79048740-D07E-4D7E-B4E5-607868D8EAAD}.Release|x86.ActiveCfg = Release|x86
 		{79048740-D07E-4D7E-B4E5-607868D8EAAD}.Release|x86.Build.0 = Release|x86
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Debug|x86.Build.0 = Debug|Any CPU
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Release|x86.ActiveCfg = Release|Any CPU
+		{6DCFD6B6-ABF0-42FB-96C0-1A2624EE9234}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

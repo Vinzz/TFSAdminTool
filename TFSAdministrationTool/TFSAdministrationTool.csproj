@@ -219,6 +219,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ADInfoService\ADInfosService.csproj">
+      <Project>{6dcfd6b6-abf0-42fb-96c0-1a2624ee9234}</Project>
+      <Name>ADInfosService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFSAdministrationTool.Proxy\TFSAdministrationTool.Proxy.csproj">
       <Project>{133EA789-B02B-4179-8C77-679BCA74C7EC}</Project>
       <Name>TFSAdministrationTool.Proxy</Name>
