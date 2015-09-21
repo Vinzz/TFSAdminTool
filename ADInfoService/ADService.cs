@@ -14,16 +14,13 @@ namespace ADInfosService
         /// </summary>
         private static DirectoryEntry de = null;
 
-        static ADService()
+        public static List<UserInfo> GetADInfos(string name)
         {
             if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("LDAPAddress")))
             {
                 throw new Exception("No external LDAP resolution without an LDAP address");
             };
-        }
 
-        public static List<UserInfo> GetADInfos(string name)
-        {
             if (de == null)
             {
                 if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("LDAPLogin")))
