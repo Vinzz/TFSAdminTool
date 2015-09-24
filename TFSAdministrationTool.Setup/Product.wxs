@@ -8,7 +8,7 @@
            Name="TFS Administration Tool OAB" 
            Language="1033" 
            Version="$(var.VERSION)" 
-           Manufacturer="www.codeplex.com/tfsadmin & OAB" 
+           Manufacturer="www.codeplex.com/tfsadmin And OAB" 
            UpgradeCode="5053215D-63C6-4B01-AA83-E492343B69DB">
     
     <Package InstallerVersion="200" Compressed="yes" />
