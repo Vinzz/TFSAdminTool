@@ -5,10 +5,10 @@
  <?define VERSION=!(bind.FileVersion.TFSAdministrationTool.exe)?>   	 
 
  <Product Id="*" 
-           Name="TFS Administration Tool" 
+           Name="TFS Administration Tool OAB" 
            Language="1033" 
            Version="$(var.VERSION)" 
-           Manufacturer="www.codeplex.com/tfsadmin" 
+           Manufacturer="www.codeplex.com/tfsadmin & OAB" 
            UpgradeCode="5053215D-63C6-4B01-AA83-E492343B69DB">
     
     <Package InstallerVersion="200" Compressed="yes" />
