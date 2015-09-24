@@ -33,7 +33,7 @@ namespace TFSAdministrationTool
       InitializeComponent();
 
       UserController.TeamProject = proxy.SelectedTeamProject;            
-      UserController.Initialize(proxy, null);
+      UserController.Initialize(proxy, null, Settings.Default.TryDomainResolution);
 
       IsDirty = false;
       IsEditing = false;
