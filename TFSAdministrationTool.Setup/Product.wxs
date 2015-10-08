@@ -4,7 +4,7 @@
   <Product Id="*" 
            Name="TFS Administration Tool" 
            Language="1033" 
-           Version="2.3.3" 
+           Version="2.4.0" 
            Manufacturer="www.codeplex.com/tfsadmin" 
            UpgradeCode="5053215D-63C6-4B01-AA83-E492343B69DB">
     
