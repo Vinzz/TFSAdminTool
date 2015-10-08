@@ -25,7 +25,7 @@ namespace TFSAdministrationTool
                 { 
                     MailMessage mail = new MailMessage();
                     mail.IsBodyHtml = Properties.Resources.NotificationBody.StartsWith("<html");
-                    mail.To.Add(email);
+                    mail.To.Add(email.ToLowerInvariant());
                     mail.Subject = Properties.Resources.NotificationSubject;
 
                     StringBuilder bodyList = new StringBuilder();
