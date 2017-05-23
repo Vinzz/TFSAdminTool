@@ -1,13 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21126.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{818C252D-9D30-464F-9440-A347F2AB8463}"
 	ProjectSection(SolutionItems) = preProject
 		TFSAdministrationTool.testrunconfig = TFSAdministrationTool.testrunconfig
 		TFSAdministrationTool.vsmdi = TFSAdministrationTool.vsmdi
-		Version\Version.cs = Version\Version.cs
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSAdministrationTool.Proxy", "TFSAdministrationTool.Proxy\TFSAdministrationTool.Proxy.csproj", "{133EA789-B02B-4179-8C77-679BCA74C7EC}"
@@ -23,24 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSAdministrationTool.Tests", "TFSAdministrationTool.Tests\TFSAdministrationTool.Tests.csproj", "{79048740-D07E-4D7E-B4E5-607868D8EAAD}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = TFSAdministrationTool\\TFSAdministrationTool.csproj
-		SccProjectName1 = TFSAdministrationTool
-		SccLocalPath1 = TFSAdministrationTool
-		SccProjectUniqueName2 = TFSAdministrationTool.Proxy\\TFSAdministrationTool.Proxy.csproj
-		SccProjectName2 = TFSAdministrationTool.Proxy
-		SccLocalPath2 = TFSAdministrationTool.Proxy
-		SccProjectUniqueName3 = TFSAdministrationTool.Setup\\TSFAdministrationTool.Setup.wixproj
-		SccProjectName3 = TFSAdministrationTool.Setup
-		SccLocalPath3 = TFSAdministrationTool.Setup
-		SccProjectUniqueName4 = TFSAdministrationTool.Tests\\TFSAdministrationTool.Tests.csproj
-		SccProjectName4 = TFSAdministrationTool.Tests
-		SccLocalPath4 = TFSAdministrationTool.Tests
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
