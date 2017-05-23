@@ -98,8 +98,8 @@
 
     <!-- Add/Remove Programs (ARP) entry.-->
     <Property Id="ARPPRODUCTICON">TfsAdminIcon.exe</Property>
-    <Property Id="ARPHELPLINK"><![CDATA[http://www.codeplex.com/tfsadmin]]></Property>
-    <Property Id="ARPURLINFOABOUT"><![CDATA[http://www.codeplex.com/tfsadmin]]></Property>
+    <Property Id="ARPHELPLINK"><![CDATA[https://github.com/Vinzz/TFSAdminTool]]></Property>
+    <Property Id="ARPURLINFOABOUT"><![CDATA[https://github.com/Vinzz/TFSAdminTool]]></Property>
     <Property Id="ARPCOMMENTS"><![CDATA[The TFS Administration Tool allows the Team Foundation Server administrator to manage user permissions across Team Foundation Server, SharePoint, SQL Server Reporting Services using a single application.]]></Property>
   </Product>
 </Wix>

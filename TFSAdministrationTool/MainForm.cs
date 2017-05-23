@@ -81,11 +81,13 @@ namespace TFSAdministrationTool
                     {
                         MessageBox.Show(string.Format(Resources.BadSMTPPrompt, smtpEx.Message), Resources.BadSMTPCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         checkNotify.Checked = false;
+                        checkNotify.Enabled = false;
                     }   
                 }
                 else
                 {
                     checkNotify.Checked = false;
+                    checkNotify.Enabled = false;
                 }
 
             }

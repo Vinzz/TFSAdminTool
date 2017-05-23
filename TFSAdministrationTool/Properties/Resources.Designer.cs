@@ -61,9 +61,10 @@ namespace TFSAdministrationTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TFS Administration Tool Home Page: http://tfsadmin.codeplex.com/
+        ///   Looks up a localized string similar to TFS Administration Tool Home Page: https://github.com/Vinzz/TFSAdminTool
         ///
-        ///TFS Administration Tool is a joint Microsoft and community effort to bring you a Power Tool for Team Foundation Server..
+        ///TFS Administration Tool is a joint Microsoft and community effort to bring you a Power Tool for Team Foundation Server.
+        ///This is Vinzz&apos;s Fork on Github.
         /// </summary>
         internal static string AboutDescription {
             get {
@@ -111,7 +112,8 @@ namespace TFSAdministrationTool.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {0}
-        ///Check the config file, emails won&apos;t be sent.
+        ///Check the config file, emails won&apos;t be sent
+        ///You can suppress this message by setting the NotifyUsersByEmail in TFSAdministrationTool.exe.config to false..
         /// </summary>
         internal static string BadSMTPPrompt {
             get {

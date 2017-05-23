@@ -1878,9 +1878,10 @@
 </value>
   </data>
   <data name="AboutDescription" xml:space="preserve">
-    <value>TFS Administration Tool Home Page: http://tfsadmin.codeplex.com/
+    <value>TFS Administration Tool Home Page: https://github.com/Vinzz/TFSAdminTool
 
-TFS Administration Tool is a joint Microsoft and community effort to bring you a Power Tool for Team Foundation Server.</value>
+TFS Administration Tool is a joint Microsoft and community effort to bring you a Power Tool for Team Foundation Server.
+This is Vinzz's Fork on Github</value>
   </data>
   <data name="AboutTitle" xml:space="preserve">
     <value>About TFS Administraion Tool</value>
@@ -2684,7 +2685,8 @@ TFS Administration Tool is a joint Microsoft and community effort to bring you a
   </data>
   <data name="BadSMTPPrompt" xml:space="preserve">
     <value>{0}
-Check the config file, emails won't be sent</value>
+Check the config file, emails won't be sent
+You can suppress this message by setting the NotifyUsersByEmail in TFSAdministrationTool.exe.config to false.</value>
   </data>
   <data name="MailCouldNotBeSentError" xml:space="preserve">
     <value>Could not send mail to {0}\n{1}</value>
