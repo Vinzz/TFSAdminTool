@@ -800,8 +800,8 @@ namespace TFSAdministrationTool
 
                     if (isDirty)
                     {
-                        /// Send notifications, if available
-                        if (Properties.Settings.Default.NotifyUsersByEmail)
+                        /// Send notifications, if available, and correctly configured
+                        if (Properties.Settings.Default.NotifyUsersByEmail && checkNotify.Checked)
                         {
                             string currMail = string.Empty;
 
