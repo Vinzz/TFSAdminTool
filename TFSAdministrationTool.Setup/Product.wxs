@@ -60,7 +60,13 @@
             
             <File Id ="TFSAdministrationTool.Proxy.dll" Source ="$(var.RAWFolder)/TFSAdministrationTool.Proxy.dll" />
             <File Id ="TFSAdministrationTool.Proxy.pdb" Source ="$(var.RAWFolder)/TFSAdministrationTool.Proxy.pdb" />
-            
+
+            <File Id ="Microsoft.VisualStudio.Services.WebApi.dll" Source ="$(var.RAWFolder)/Microsoft.VisualStudio.Services.WebApi.dll" />
+             <File Id ="Microsoft.TeamFoundation.Client.dll" Source ="$(var.RAWFolder)/Microsoft.TeamFoundation.Client.dll" />
+             <File Id ="Microsoft.TeamFoundation.Common.dll" Source ="$(var.RAWFolder)/Microsoft.TeamFoundation.Common.dll" />
+             <File Id ="Microsoft.VisualStudio.Services.Client.dll" Source ="$(var.RAWFolder)/Microsoft.VisualStudio.Services.Client.dll" />
+             <File Id ="Microsoft.VisualStudio.Services.Common.dll" Source ="$(var.RAWFolder)/Microsoft.VisualStudio.Services.Common.dll" />
+
             <File Id ="RoleConfig.xml" Source ="$(var.RAWFolder)/RoleConfig.xml" />
 
             <Shortcut Id="TfsAdminShortcut"
